@@ -1,7 +1,14 @@
 # Entrega-1-Modelo-Conceitual-DER
 Modelagem de um sistema de gestão de informações para uma organização de pequeno porte
 ## Metadados
+**João Vitor Silva Alves Araujo RGM: 46905570**
 
+**Raimundo Walter RGM: 46852042**
+
+**Kaique Vieira Santos RGM: 47022493**
+
+**Vítor Bezerra Marques RGM: 47538775**
+****
 ## 1. Caracterização da Organização
 
 - **Nome e natureza da organização:** Peg Vest Jeans — empresa especializada na comercialização de jeans feminino no segmento de atacado.
@@ -9,19 +16,34 @@ Modelagem de um sistema de gestão de informações para uma organização de pe
 - **Problemas e necessidades identificados:** Dificuldade de controle de estoque, padronizações e processos, necessidade do uso de outros sistemas para diferentes canais de vendas, não totalmente compatíveis 
 - **Justificativa da escolha:** A Peg Vest Jeans foi escolhida porque um membro de nossa equipe trabalha no local e possui proximidade com a área e facil acesso ao local e, também, por se encaixar nos parâmetros estabelecidos para a escolha da organização.
 - **Evidências da organização:**
-- *link Google maps* : https://share.google/FzxoIRizJsZNpBqxM
-
+  
+    Endereço : R. Rodrigues dos Santos, 718
+  
+    Link Google Maps: https://share.google/DAEpR3k6h6TCqBPD0
+  
+    Contato: (11) 96173-2019
+  
+    Imagens Do local:
+  
 ## 2. Processos de Negócio
-*(vale 10% — Dimensão Procedimental)*
 
 - **Principais processos mapeados:** cadastro de clientes, controle de estoque, vendas, emissão de pedidos e solicitações, entregas e transferências
-- **Fluxogramas:** (Opcional) *represente visualmente pelo menos os processos-chave (imagens anexadas). Deve ficar claro o fluxo de cada processo e como eles se integram entre si.*
 ---
 ## 3. Requisitos do Sistema
 *(esta seção e a Seção 4 "Regras de Negócio" DIVIDEM 7,5% na dimensão conceitual — juntas valem 7,5%, não 7,5% cada — + 4% exclusivos desta seção na organização/documentação)*
 
 ### 3.1 Requisitos Funcionais
-*O que o sistema precisa FAZER (ex.: "o sistema deve permitir registrar uma venda").*
+- **Cadastrar clientes → O sistema deve permitir cadastrar nome, CPF, telefone e endereço do cliente.**
+- **Cadastrar produtos → O sistema deve permitir cadastrar produtos com nome, preço e quantidade em estoque.**
+- **Realizar vendas → O sistema deve permitir que o funcionário registre uma venda para um cliente.**
+- **Consultar estoque → O sistema deve permitir consultar a quantidade disponível de cada produto.**
+- **Atualizar estoque → Após uma venda, o sistema deve diminuir automaticamente a quantidade do produto no estoque**
+- **Gerar nota fiscal → O sistema deve permitir gerar a nota fiscal referente à venda.**
+- **Realizar login → O sistema deve permitir que funcionários façam login utilizando usuário e senha.**
+- **Gerar relatórios → O sistema deve permitir gerar relatórios de vendas por período.**
+- **Cancelar uma venda → O sistema deve permitir que um funcionário autorizado cancele uma venda.**
+- **Enviar notificações → O sistema deve enviar uma notificação quando determinado produto estiver com estoque baixo**
+
 
 ### 3.2 Requisitos Não Funcionais
 *Características de qualidade (ex.: desempenho, segurança, usabilidade, disponibilidade).*
