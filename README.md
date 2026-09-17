@@ -24,6 +24,9 @@ Modelagem de um sistema de gestão de informações para uma organização de pe
     Contato: (11) 96173-2019
   
     Imagens Do local:
+
+  <img width="382" height="510" alt="image" src="https://github.com/user-attachments/assets/eb38a776-4753-43cc-a795-d5f32b7f5d3a" />
+
   
 ## 2. Processos de Negócio
 
