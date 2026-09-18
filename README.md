@@ -82,9 +82,12 @@ Modelagem de um sistema de gestão de informações para uma organização de pe
 - *Funcionários não podem conceder descontos que não estejam previamente definidos pela empresa.*
 - *Vendedores somente podem liberar uma entrega mediante autorização da gerência.*
 - *Alterações que afetem configurações ou regras comerciais do sistema devem ser realizadas somente por usuários autorizados*
-  
 - 
-- **Restrições organizacionais:** *limitações que afetam o modelo (ex.: políticas internas, prazos, exigências legais, normas religiosas ou estatutárias) — e por que elas importam.*
+- **4.2 Restrições organizacionais:**
+- **Permissões de acesso**
+- *Cada usuário deve possuir acesso somente aos módulos do sistema correspondentes à sua função*
+- *O acesso às funcionalidades deve ser controlado de acordo com o nível de permissão de cada usuário.*
+- 
 
 ---
 
