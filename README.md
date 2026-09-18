@@ -71,8 +71,8 @@ Modelagem de um sistema de gestão de informações para uma organização de pe
 - *Após a confirmação de uma venda, a quantidade correspondente deve ser atualizada no estoque.*
 - *A quantidade disponível de um produto não pode assumir valores negativos.*
 - **cancelamento**
-- *Um pedido pode ser cancelado somente enquanto não tiver sido enviado.
-Após o envio do pedido, o cancelamento não poderá ser realizado pelo fluxo normal do sistema.*
+- *Um pedido pode ser cancelado somente enquanto não tiver sido enviado.*
+- *Após o envio do pedido, o cancelamento não poderá ser realizado pelo fluxo normal do sistema.*
 **vendas no atacado e varejo**
   *Nas vendas realizadas no atacado, os pedidos devem respeitar uma quantidade mínima de 15 peças.*
   *As vendas no varejo não possuem quantidade mínima de peças.*
