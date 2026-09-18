@@ -74,14 +74,14 @@ Modelagem de um sistema de gestão de informações para uma organização de pe
 - *Um pedido pode ser cancelado somente enquanto não tiver sido enviado.*
 - *Após o envio do pedido, o cancelamento não poderá ser realizado pelo fluxo normal do sistema.*
 **vendas no atacado e varejo**
-  *Nas vendas realizadas no atacado, os pedidos devem respeitar uma quantidade mínima de 15 peças.*
-  *As vendas no varejo não possuem quantidade mínima de peças.*
-  *Os preços praticados no varejo são superiores aos preços utilizados nas vendas no atacado, conforme a política comercial da empresa.*
-  **funcionarios**
-  *Funcionários não podem alterar os preços dos produtos.*
-  *Funcionários não podem conceder descontos que não estejam previamente definidos pela empresa.*
-  *Vendedores somente podem liberar uma entrega mediante autorização da gerência.*
-  *Alterações que afetem configurações ou regras comerciais do sistema devem ser realizadas somente por usuários autorizados*
+- *Nas vendas realizadas no atacado, os pedidos devem respeitar uma quantidade mínima de 15 peças.*
+- *As vendas no varejo não possuem quantidade mínima de peças.*
+- *Os preços praticados no varejo são superiores aos preços utilizados nas vendas no atacado, conforme a política comercial da empresa.*
+**funcionarios**
+- *Funcionários não podem alterar os preços dos produtos.*
+- *Funcionários não podem conceder descontos que não estejam previamente definidos pela empresa.*
+- *Vendedores somente podem liberar uma entrega mediante autorização da gerência.*
+- *Alterações que afetem configurações ou regras comerciais do sistema devem ser realizadas somente por usuários autorizados*
   
 - 
 - **Restrições organizacionais:** *limitações que afetam o modelo (ex.: políticas internas, prazos, exigências legais, normas religiosas ou estatutárias) — e por que elas importam.*
