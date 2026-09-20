@@ -50,6 +50,7 @@ Modelagem de um sistema de gestão de informações para uma organização de pe
 - **Enviar notificações → O sistema deve enviar uma notificação quando determinado produto estiver com estoque baixo**
 
 
+---
 ### 3.2 Requisitos Não Funcionais
 *Características de qualidade (ex.: desempenho, segurança, usabilidade, disponibilidade).*
 
@@ -57,37 +58,45 @@ Modelagem de um sistema de gestão de informações para uma organização de pe
 ## 4. Regras de Negócio
 
 - ## 4.1 Regras operacionais:
-- **cadastro**
-- *O cadastro de clientes deve possuir os dados obrigatórios definidos pela empresa, incluindo CPF para clientes pessoa física e CNPJ para clientes pessoa jurídica.*
-- **Pagamento**
-- *Uma compra somente pode ser considerada efetuada após a confirmação do pagamento.*
-- *O pedido não deve ser liberado para as etapas seguintes enquanto o pagamento não estiver confirmado.*
-- **Desconto**
-- *Compras realizadas por meio de Pix possuem desconto de 5% sobre o valor da compra.*
-- *O desconto deve ser aplicado somente quando a forma de pagamento selecionada for Pix.*
-- *Funcionários não possuem permissão para conceder descontos diferentes dos definidos pela empresa.*
-- **estoque**
-- *Um produto não pode ser vendido quando não houver quantidade disponível em estoque.*
-- *Após a confirmação de uma venda, a quantidade correspondente deve ser atualizada no estoque.*
-- *A quantidade disponível de um produto não pode assumir valores negativos.*
-- **cancelamento**
-- *Um pedido pode ser cancelado somente enquanto não tiver sido enviado.*
-- *Após o envio do pedido, o cancelamento não poderá ser realizado pelo fluxo normal do sistema.*
-- **vendas no atacado e varejo**
-- *Nas vendas realizadas no atacado, os pedidos devem respeitar uma quantidade mínima de 15 peças.*
-- *As vendas no varejo não possuem quantidade mínima de peças.*
-- *Os preços praticados no varejo são superiores aos preços utilizados nas vendas no atacado, conforme a política comercial da empresa.*
-- **funcionarios**
-- *Funcionários não podem alterar os preços dos produtos.*
-- *Funcionários não podem conceder descontos que não estejam previamente definidos pela empresa.*
-- *Vendedores somente podem liberar uma entrega mediante autorização da gerência.*
-- *Alterações que afetem configurações ou regras comerciais do sistema devem ser realizadas somente por usuários autorizados*
-- 
-- **4.2 Restrições organizacionais:**
-- **Permissões de acesso**
-- *Cada usuário deve possuir acesso somente aos módulos do sistema correspondentes à sua função*
-- *O acesso às funcionalidades deve ser controlado de acordo com o nível de permissão de cada usuário.*
-- 
+- #### Cadastro 
+  *O cadastro de clientes deve possuir os dados obrigatórios definidos pela empresa, incluindo CPF para clientes pessoa física e CNPJ para clientes pessoa jurídica.*
+- #### Pagamento
+  *Uma compra somente pode ser considerada efetuada após a confirmação do pagamento.*
+  
+  *O pedido não deve ser liberado para as etapas seguintes enquanto o pagamento não estiver confirmado.*
+- #### Desconto
+  *Compras realizadas por meio de Pix possuem desconto de 5% sobre o valor da compra.*
+  
+  *O desconto deve ser aplicado somente quando a forma de pagamento selecionada for Pix.*
+  
+  *Funcionários não possuem permissão para conceder descontos diferentes dos definidos pela empresa.*
+- #### Estoque 
+  *Um produto não pode ser vendido quando não houver quantidade disponível em estoque.*
+  
+  *Após a confirmação de uma venda, a quantidade correspondente deve ser atualizada no estoque.*
+  
+  *A quantidade disponível de um produto não pode assumir valores negativos.*
+- #### Cancelamento
+  *Um pedido pode ser cancelado somente enquanto não tiver sido enviado.*
+  
+  *Após o envio do pedido, o cancelamento não poderá ser realizado pelo fluxo normal do sistema.*
+- #### Vendas no atacado e varejo
+  *Nas vendas realizadas no atacado, os pedidos devem respeitar uma quantidade mínima de 15 peças.*
+  
+  *As vendas no varejo não possuem quantidade mínima de peças.*
+  
+  *Os preços praticados no varejo são superiores aos preços utilizados nas vendas no atacado, conforme a política comercial da empresa.*
+- #### Funcionarios
+  *Funcionários não podem alterar os preços dos produtos.*
+  
+  *Funcionários não podem conceder descontos que não estejam previamente definidos pela empresa.*
+  
+  *Vendedores somente podem liberar uma entrega mediante autorização da gerência.*
+  
+  *Alterações que afetem configurações ou regras comerciais do sistema devem ser realizadas somente por usuários autorizados*
+  
+- ## Restrições organizacionais:
+- *limitações que afetam o modelo (ex.: políticas internas, prazos, exigências legais, normas religiosas ou estatutárias) — e por que elas importam.*
 
 ---
 
@@ -108,6 +117,19 @@ Para cada entidade identificada, liste:
 
 ## 6. Modelagem Conceitual (Entidades, Atributos, Relacionamentos)
 *(vale 7,5% na dimensão conceitual)*
+| Entidade | Relaciona-se com | Justificativa |
+|---|---|---|
+| Empresa | Cliente | 1:N - Uma empresa atende vários clientes.  |
+| Empresa | Funcionário | 1:N - Uma empresa emprega vários funcionários |
+| Funcionário | Cliente | 1:N - Um funcionário atende vários clientes. |
+| Funcionário | Empresa | 1:1 - Um fun |
+| Fornecedor | d |  |
+| Produto | c | |
+| Estoque | d  | |
+| Pedido | s | |
+| Pagamento | d |  |
+
+
 
 - **Entidades reconhecidas:** *liste e justifique brevemente cada uma.*
 - **Atributos e classificações:** *quais atributos pertencem a cada entidade.*
