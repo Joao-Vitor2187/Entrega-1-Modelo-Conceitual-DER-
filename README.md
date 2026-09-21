@@ -146,6 +146,7 @@ Para cada entidade identificada, liste:
 |---|---|---|
 | Empresa | Cliente | 1:N - Uma empresa atende vários clientes.  |
 | Empresa | Funcionário | 1:N - Uma empresa emprega vários funcionários |
+| Empresa | Fornecedor | 1:N - Uma empresa tem vários fornecedores |
 | Funcionário | Cliente | 1:N - Um funcionário atende vários clientes. |
 | Funcionário | Empresa | 1:1 - Um fun |
 | Fornecedor | d |  |
