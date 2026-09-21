@@ -87,16 +87,19 @@ Modelagem de um sistema de gestão de informações para uma organização de pe
   
   *Os preços praticados no varejo são superiores aos preços utilizados nas vendas no atacado, conforme a política comercial da empresa.*
 - #### Funcionarios
-  *Funcionários não podem alterar os preços dos produtos.*
+- *Funcionários não podem alterar os preços dos produtos.*
   
-  *Funcionários não podem conceder descontos que não estejam previamente definidos pela empresa.*
+-*Funcionários não podem conceder descontos que não estejam previamente definidos pela empresa.*
   
-  *Vendedores somente podem liberar uma entrega mediante autorização da gerência.*
+-*Vendedores somente podem liberar uma entrega mediante autorização da gerência.*
   
-  *Alterações que afetem configurações ou regras comerciais do sistema devem ser realizadas somente por usuários autorizados*
+-*Alterações que afetem configurações ou regras comerciais do sistema devem ser realizadas somente por usuários autorizados*
   
 - ## Restrições organizacionais:
-- *limitações que afetam o modelo (ex.: políticas internas, prazos, exigências legais, normas religiosas ou estatutárias) — e por que elas importam.*
+- ### Permissões de acesso
+- *Cada usuário deve possuir acesso somente aos módulos do sistema correspondentes à sua função, como vendas, estoque, financeiro ou administração.*
+- *O acesso às funcionalidades do sistema deve ser controlado de acordo com o nível de permissão de cada usuário.*
+-*Funcionários do setor de vendas, por exemplo, não devem possuir acesso às configurações administrativas ou informações restritas do setor financeiro.*
 
 ---
 
