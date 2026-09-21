@@ -99,7 +99,7 @@ Modelagem de um sistema de gestão de informações para uma organização de pe
 - ### Permissões de acesso
 - *Cada usuário deve possuir acesso somente aos módulos do sistema correspondentes à sua função, como vendas, estoque, financeiro ou administração.*
 - *O acesso às funcionalidades do sistema deve ser controlado de acordo com o nível de permissão de cada usuário.*
--*Funcionários do setor de vendas, por exemplo, não devem possuir acesso às configurações administrativas ou informações restritas do setor financeiro.*
+- *Funcionários do setor de vendas, por exemplo, não devem possuir acesso às configurações administrativas ou informações restritas do setor financeiro.*
 
 ---
 
