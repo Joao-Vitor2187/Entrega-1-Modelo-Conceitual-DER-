@@ -100,6 +100,19 @@ Modelagem de um sistema de gestão de informações para uma organização de pe
 - *Cada usuário deve possuir acesso somente aos módulos do sistema correspondentes à sua função, como vendas, estoque, financeiro ou administração.*
 - *O acesso às funcionalidades do sistema deve ser controlado de acordo com o nível de permissão de cada usuário.*
 - *Funcionários do setor de vendas, por exemplo, não devem possuir acesso às configurações administrativas ou informações restritas do setor financeiro.*
+- ### Administração do sistema
+- *Somente o administrador possui permissão para alterar determinadas configurações do sistema.*
+- *Usuários comuns não podem modificar configurações administrativas sem autorização.*
+- *Alterações relacionadas às configurações do sistema, permissões de usuários e regras internas devem ser realizadas somente por funcionários autorizados*
+- ### Backup
+- *Os dados do sistema devem possuir backup realizado diariamente, conforme a política interna da empresa.*
+- *Os backups devem preservar informações como clientes, produtos, estoque, pedidos, vendas e pagamentos.*
+- *Os backups têm como objetivo possibilitar a recuperação dos dados em caso de falhas, perda de informações ou problemas no sistema.*
+- ### Dados dos clientes
+- *Somente funcionários autorizados podem acessar os dados cadastrais dos clientes.*
+- *O acesso às informações dos clientes deve respeitar as permissões definidas pela empresa.*
+- *Funcionários que não necessitam dessas informações para realizar suas atividades não devem possuir acesso aos dados cadastrais dos clientes.*
+- *As informações dos clientes devem ser utilizadas somente para as atividades relacionadas ao funcionamento da loja.*
 
 ---
 
