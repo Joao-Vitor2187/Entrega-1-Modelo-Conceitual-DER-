@@ -35,7 +35,7 @@ Modelagem de um sistema de gestão de informações para uma organização de pe
 - **Principais processos mapeados:** cadastro de clientes, controle de estoque, vendas, emissão de pedidos e solicitações, entregas e transferências
 ---
 ## 3. Requisitos do Sistema
-*(esta seção e a Seção 4 "Regras de Negócio" DIVIDEM 7,5% na dimensão conceitual — juntas valem 7,5%, não 7,5% cada — + 4% exclusivos desta seção na organização/documentação)*
+
 
 ### 3.1 Requisitos Funcionais
 - **Cadastrar clientes → O sistema deve permitir cadastrar nome, CPF, telefone e endereço do cliente.**
@@ -48,71 +48,80 @@ Modelagem de um sistema de gestão de informações para uma organização de pe
 - **Gerar relatórios → O sistema deve permitir gerar relatórios de vendas por período.**
 - **Cancelar uma venda → O sistema deve permitir que um funcionário autorizado cancele uma venda.**
 - **Enviar notificações → O sistema deve enviar uma notificação quando determinado produto estiver com estoque baixo**
-
-
 ---
 ### 3.2 Requisitos Não Funcionais
-*Características de qualidade (ex.: desempenho, segurança, usabilidade, disponibilidade).*
 
 ---
 ## 4. Regras de Negócio
 
 - ## 4.1 Regras operacionais:
 - #### Cadastro 
-  *O cadastro de clientes deve possuir os dados obrigatórios definidos pela empresa, incluindo CPF para clientes pessoa física e CNPJ para clientes pessoa jurídica.*
+  O cadastro de clientes deve possuir os dados obrigatórios definidos pela empresa, incluindo CPF para clientes pessoa física e CNPJ para clientes pessoa jurídica.*
 - #### Pagamento
-  *Uma compra somente pode ser considerada efetuada após a confirmação do pagamento.*
+  Uma compra somente pode ser considerada efetuada após a confirmação do pagamento.*
   
-  *O pedido não deve ser liberado para as etapas seguintes enquanto o pagamento não estiver confirmado.*
+  O pedido não deve ser liberado para as etapas seguintes enquanto o pagamento não estiver confirmado.
 - #### Desconto
-  *Compras realizadas por meio de Pix possuem desconto de 5% sobre o valor da compra.*
+  Compras realizadas por meio de Pix possuem desconto de 5% sobre o valor da compra.
   
-  *O desconto deve ser aplicado somente quando a forma de pagamento selecionada for Pix.*
+  O desconto deve ser aplicado somente quando a forma de pagamento selecionada for Pix.
   
-  *Funcionários não possuem permissão para conceder descontos diferentes dos definidos pela empresa.*
+  Funcionários não possuem permissão para conceder descontos diferentes dos definidos pela empresa.
 - #### Estoque 
-  *Um produto não pode ser vendido quando não houver quantidade disponível em estoque.*
+  Um produto não pode ser vendido quando não houver quantidade disponível em estoque.
   
-  *Após a confirmação de uma venda, a quantidade correspondente deve ser atualizada no estoque.*
+  Após a confirmação de uma venda, a quantidade correspondente deve ser atualizada no estoque.
   
-  *A quantidade disponível de um produto não pode assumir valores negativos.*
+  A quantidade disponível de um produto não pode assumir valores negativos.
 - #### Cancelamento
-  *Um pedido pode ser cancelado somente enquanto não tiver sido enviado.*
+  Um pedido pode ser cancelado somente enquanto não tiver sido enviado.
   
-  *Após o envio do pedido, o cancelamento não poderá ser realizado pelo fluxo normal do sistema.*
+  Após o envio do pedido, o cancelamento não poderá ser realizado pelo fluxo normal do sistema.
 - #### Vendas no atacado e varejo
-  *Nas vendas realizadas no atacado, os pedidos devem respeitar uma quantidade mínima de 15 peças.*
+  Nas vendas realizadas no atacado, os pedidos devem respeitar uma quantidade mínima de 15 peças.
   
-  *As vendas no varejo não possuem quantidade mínima de peças.*
+  As vendas no varejo não possuem quantidade mínima de peças.
   
-  *Os preços praticados no varejo são superiores aos preços utilizados nas vendas no atacado, conforme a política comercial da empresa.*
+  Os preços praticados no varejo são superiores aos preços utilizados nas vendas no atacado, conforme a política comercial da empresa.
 - #### Funcionarios
-- *Funcionários não podem alterar os preços dos produtos.*
+  Funcionários não podem alterar os preços dos produtos.
   
--*Funcionários não podem conceder descontos que não estejam previamente definidos pela empresa.*
+  Funcionários não podem conceder descontos que não estejam previamente definidos pela empresa.
   
--*Vendedores somente podem liberar uma entrega mediante autorização da gerência.*
+  Vendedores somente podem liberar uma entrega mediante autorização da gerência.
   
--*Alterações que afetem configurações ou regras comerciais do sistema devem ser realizadas somente por usuários autorizados*
+  Alterações que afetem configurações ou regras comerciais do sistema devem ser realizadas somente por usuários autorizados*
   
 - ## Restrições organizacionais:
 - ### Permissões de acesso
-- *Cada usuário deve possuir acesso somente aos módulos do sistema correspondentes à sua função, como vendas, estoque, financeiro ou administração.*
-- *O acesso às funcionalidades do sistema deve ser controlado de acordo com o nível de permissão de cada usuário.*
-- *Funcionários do setor de vendas, por exemplo, não devem possuir acesso às configurações administrativas ou informações restritas do setor financeiro.*
+  Cada usuário deve possuir acesso somente aos módulos do sistema correspondentes à sua função, como vendas, estoque, financeiro ou administração.
+  
+  O acesso às funcionalidades do sistema deve ser controlado de acordo com o nível de permissão de cada usuário.
+  
+  Funcionários do setor de vendas, por exemplo, não devem possuir acesso às configurações administrativas ou informações restritas do setor financeiro.
+  
 - ### Administração do sistema
-- *Somente o administrador possui permissão para alterar determinadas configurações do sistema.*
-- *Usuários comuns não podem modificar configurações administrativas sem autorização.*
-- *Alterações relacionadas às configurações do sistema, permissões de usuários e regras internas devem ser realizadas somente por funcionários autorizados*
+  Somente o administrador possui permissão para alterar determinadas configurações do sistema.
+  
+  Usuários comuns não podem modificar configurações administrativas sem autorização.
+  
+  Alterações relacionadas às configurações do sistema, permissões de usuários e regras internas devem ser realizadas somente por funcionários autorizados
+  
 - ### Backup
-- *Os dados do sistema devem possuir backup realizado diariamente, conforme a política interna da empresa.*
-- *Os backups devem preservar informações como clientes, produtos, estoque, pedidos, vendas e pagamentos.*
-- *Os backups têm como objetivo possibilitar a recuperação dos dados em caso de falhas, perda de informações ou problemas no sistema.*
+  Os dados do sistema devem possuir backup realizado diariamente, conforme a política interna da empresa.
+  
+  Os backups devem preservar informações como clientes, produtos, estoque, pedidos, vendas e pagamentos.
+  
+  Os backups têm como objetivo possibilitar a recuperação dos dados em caso de falhas, perda de informações ou problemas no sistema.
+  
 - ### Dados dos clientes
-- *Somente funcionários autorizados podem acessar os dados cadastrais dos clientes.*
-- *O acesso às informações dos clientes deve respeitar as permissões definidas pela empresa.*
-- *Funcionários que não necessitam dessas informações para realizar suas atividades não devem possuir acesso aos dados cadastrais dos clientes.*
-- *As informações dos clientes devem ser utilizadas somente para as atividades relacionadas ao funcionamento da loja.*
+  Somente funcionários autorizados podem acessar os dados cadastrais dos clientes.
+  
+  O acesso às informações dos clientes deve respeitar as permissões definidas pela empresa.
+  
+  Funcionários que não necessitam dessas informações para realizar suas atividades não devem possuir acesso aos dados cadastrais dos clientes.
+  
+  As informações dos clientes devem ser utilizadas somente para as atividades relacionadas ao funcionamento da loja.
 
 ---
 
