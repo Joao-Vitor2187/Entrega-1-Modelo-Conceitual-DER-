@@ -254,6 +254,285 @@ Os exemplos de valores eventualmente utilizados para representar os atributos de
 
 
 ---
+6. Modelagem Conceitual (Entidades, Atributos, Relacionamentos)
+
+A modelagem conceitual tem como objetivo representar as principais informações do sistema, suas características e os relacionamentos existentes entre elas. O modelo é composto pelas entidades Funcionário, Cliente, Empresa, Estoque, Pedido, Fornecedor e Pagamento.
+
+6.1 Entidades reconhecidas
+Funcionário
+
+Representa os colaboradores responsáveis pelas atividades internas da empresa, podendo estar envolvidos no atendimento aos clientes e no registro de pedidos.
+
+Atributos:
+
+id_funcionario — identificador único do funcionário.
+
+nome — nome completo do funcionário.
+
+cpf — CPF do funcionário.
+
+cargo — cargo ou função exercida.
+
+telefone — telefone para contato.
+
+email — endereço de e-mail.
+
+data_admissão — data em que o funcionário foi admitido.
+
+status — situação atual do funcionário, como ativo ou inativo.
+
+Cliente
+
+Representa as pessoas físicas ou jurídicas que realizam compras ou mantêm relacionamento comercial com a empresa.
+
+Atributos:
+
+id_cliente — identificador único do cliente.
+
+nome — nome do cliente ou responsável.
+
+cpf_cnpj — documento de identificação do cliente.
+
+telefone — telefone para contato.
+
+email — endereço de e-mail.
+
+endereço — endereço do cliente.
+
+tipo_cliente — identifica se o cliente é pessoa física ou jurídica.
+
+status — situação do cadastro do cliente.
+
+Empresa
+
+Representa a organização responsável pela operação do sistema e pelo gerenciamento das atividades comerciais.
+
+Atributos:
+
+id_empresa — identificador único da empresa.
+
+razao_social — razão social da empresa.
+
+cnpj — CNPJ da empresa.
+
+nome_fantasia — nome comercial utilizado pela empresa.
+
+endereco — endereço da empresa.
+
+telefone — telefone de contato.
+
+email — endereço de e-mail da empresa.
+
+Estoque
+
+Representa o controle da quantidade disponível dos produtos, permitindo acompanhar os níveis de estoque e sua atualização.
+
+Atributos:
+
+id_estoque — identificador único do registro de estoque.
+
+id_produto — identificador do produto relacionado ao estoque.
+
+quantidade_disponivel — quantidade disponível do produto.
+
+quantidade_minima — quantidade mínima desejada para o produto.
+
+data_atualizacao — data da última atualização das informações do estoque.
+
+Observação: o atributo id_produto pressupõe a existência de uma entidade Produto, que não foi listada entre as entidades fornecidas. Caso Produto faça parte do escopo do sistema, ela deverá ser adicionada ao modelo conceitual.
+
+Pedido
+
+Representa uma solicitação de compra realizada por um cliente e registrada por um funcionário.
+
+Atributos:
+
+id_pedido — identificador único do pedido.
+
+id_cliente — identifica o cliente responsável pelo pedido.
+
+id_funcionario — identifica o funcionário responsável pelo registro ou atendimento.
+
+data_pedido — data em que o pedido foi realizado.
+
+status — situação atual do pedido.
+
+tipo_venda — modalidade ou tipo da venda realizada.
+
+valor_total — valor total do pedido.
+
+data_envio — data em que o pedido foi enviado.
+
+Fornecedor
+
+Representa as empresas ou pessoas responsáveis pelo fornecimento de produtos ou materiais para a organização.
+
+Atributos:
+
+id_fornecedor — identificador único do fornecedor.
+
+nome — nome ou razão social do fornecedor.
+
+cnpj — CNPJ do fornecedor.
+
+telefone — telefone para contato.
+
+email — endereço de e-mail.
+
+endereço — endereço do fornecedor.
+
+status — situação atual do fornecedor.
+
+Pagamento
+
+Representa os pagamentos associados aos pedidos realizados pelos clientes.
+
+Atributos:
+
+id_pagamento — identificador único do pagamento.
+
+id_pedido — identifica o pedido ao qual o pagamento está associado.
+
+data_pagamento — data em que o pagamento foi realizado.
+
+forma_pagamento — meio utilizado para realizar o pagamento.
+
+valor — valor pago.
+
+status — situação do pagamento.
+
+desconto_aplicado — valor ou percentual de desconto aplicado ao pagamento.
+
+6.2 Classificação dos atributos
+
+Os atributos podem ser classificados de acordo com sua função no modelo:
+
+Entidade	Atributo-chave	Atributos descritivos	Possíveis atributos de relacionamento
+Funcionário	id_funcionario	nome, cpf, cargo, telefone, email, data_admissão, status	—
+Cliente	id_cliente	nome, cpf_cnpj, telefone, email, endereço, tipo_cliente, status	—
+Empresa	id_empresa	razao_social, cnpj, nome_fantasia, endereco, telefone, email	—
+Estoque	id_estoque	quantidade_disponivel, quantidade_minima, data_atualizacao	id_produto
+Pedido	id_pedido	data_pedido, status, tipo_venda, valor_total, data_envio	id_cliente, id_funcionario
+Fornecedor	id_fornecedor	nome, cnpj, telefone, email, endereço, status	—
+Pagamento	id_pagamento	data_pagamento, forma_pagamento, valor, status, desconto_aplicado	id_pedido
+
+Os atributos id_* funcionam como identificadores das entidades. Já os atributos que fazem referência a outra entidade, como id_cliente, id_funcionario e id_pedido, representam associações entre os registros.
+
+6.3 Relacionamentos pertinentes
+
+Os principais relacionamentos identificados no modelo são:
+
+Cliente — Pedido
+
+Um Cliente pode realizar vários Pedidos, enquanto cada Pedido pertence a um único Cliente.
+
+Cardinalidade: Cliente 1 : N Pedido
+
+Cliente (1) ─────────── (N) Pedido
+
+Funcionário — Pedido
+
+Um Funcionário pode registrar ou atender vários Pedidos, enquanto cada Pedido é associado a um funcionário responsável.
+
+Cardinalidade: Funcionário 1 : N Pedido
+
+Funcionário (1) ─────── (N) Pedido
+
+Pedido — Pagamento
+
+Um Pedido pode possuir um ou mais registros de Pagamento, dependendo das regras de negócio adotadas. Cada pagamento está relacionado a um pedido específico.
+
+Cardinalidade: Pedido 1 : N Pagamento
+
+Pedido (1) ──────────── (N) Pagamento
+
+Produto — Estoque
+
+O registro de Estoque está associado a um Produto por meio do atributo id_produto. Essa relação permite controlar a quantidade disponível e o nível mínimo de cada produto.
+
+Cardinalidade sugerida: Produto 1 : 1 Estoque
+
+Produto (1) ─────────── (1) Estoque
+
+
+Como a entidade Produto não foi apresentada na lista original, esse relacionamento depende da inclusão dessa entidade no modelo.
+
+Fornecedor — Produto
+
+Embora não exista um atributo que represente diretamente esse relacionamento nas entidades fornecidas, conceitualmente um Fornecedor pode fornecer vários Produtos, e um Produto pode ser fornecido por diferentes Fornecedores.
+
+Cardinalidade sugerida: Fornecedor N : N Produto
+
+Fornecedor (N) ─────── (N) Produto
+
+
+Para implementar esse relacionamento em um modelo lógico/relacional, seria necessário criar uma entidade associativa, como Fornecedor_Produto.
+
+Empresa — Funcionário
+
+Uma Empresa pode possuir vários Funcionários, enquanto cada funcionário está vinculado a uma empresa.
+
+Cardinalidade: Empresa 1 : N Funcionário
+
+Empresa (1) ─────────── (N) Funcionário
+
+Empresa — Cliente
+
+Uma Empresa pode possuir ou atender diversos Clientes. A cardinalidade exata depende da regra de negócio adotada, especialmente se o sistema representar uma única empresa ou múltiplas empresas.
+
+6.4 Resumo dos relacionamentos
+Relacionamento	Cardinalidade	Descrição
+Cliente — Pedido	1:N	Um cliente pode realizar vários pedidos.
+Funcionário — Pedido	1:N	Um funcionário pode registrar vários pedidos.
+Pedido — Pagamento	1:N	Um pedido pode possuir registros de pagamento.
+Produto — Estoque	1:1	Um produto possui seu controle de estoque.
+Fornecedor — Produto	N:N	Um fornecedor pode fornecer vários produtos e um produto pode ter vários fornecedores.
+Empresa — Funcionário	1:N	Uma empresa pode possuir vários funcionários.
+Empresa — Cliente	1:N*	Uma empresa pode possuir/atender vários clientes.
+
+* A cardinalidade deve ser confirmada de acordo com a regra de negócio do sistema.
+
+6.5 Restrições e políticas organizacionais
+
+As seguintes regras e restrições são aplicadas ao modelo conceitual:
+
+Cada entidade deve possuir um identificador único (id_*).
+
+O CPF de um funcionário deve ser único no cadastro.
+
+O CNPJ de uma empresa deve ser único.
+
+O CNPJ de um fornecedor deve ser único.
+
+O campo cpf_cnpj do cliente deve respeitar o formato correspondente ao tipo de cliente.
+
+Um pedido deve estar associado a um cliente existente.
+
+Um pedido deve estar associado ao funcionário responsável pelo seu registro.
+
+Um pagamento deve estar associado a um pedido existente.
+
+O valor de um pedido deve ser igual ou superior a zero.
+
+O valor de um pagamento deve ser igual ou superior a zero.
+
+quantidade_disponivel e quantidade_minima do estoque não devem possuir valores negativos.
+
+A data_envio não deve ser anterior à data_pedido.
+
+A data_pagamento deve ser compatível com a existência do pedido e com o fluxo de pagamento definido pela organização.
+
+Registros com status devem utilizar valores previamente definidos pela regra de negócio, evitando informações inconsistentes.
+
+Um cliente ou funcionário inativo não deve ser utilizado para novos processos que exijam cadastro ativo, conforme as políticas da organização.
+
+A baixa ou atualização do estoque deve ocorrer de acordo com a confirmação do pedido e as regras de venda estabelecidas.
+
+Dados de contato, como telefone e e-mail, devem seguir formatos válidos.
+
+Informações cadastrais e financeiras devem ser protegidas contra alterações indevidas, respeitando as permissões dos usuários do sistema.
+
+
 
 ## 6. Modelagem Conceitual (Entidades, Atributos, Relacionamentos)
 *(vale 7,5% na dimensão conceitual)*
@@ -268,6 +547,8 @@ Os exemplos de valores eventualmente utilizados para representar os atributos de
 | Estoque |---| d  | | |
 | Pedido |---| s | | |
 | Pagamento |---| d | |  |
+
+
 
 
 
