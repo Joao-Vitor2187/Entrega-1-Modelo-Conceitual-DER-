@@ -179,7 +179,13 @@ Para cada entidade identificada, liste:
 ## 8. Justificativa Técnica
 *(vale 7,5% — sozinho, é o subcritério de maior peso dentro da Dimensão Conceitual)*
 
-*Explique e defenda as decisões de abstração e modelagem tomadas: por que essas entidades, esses atributos, esses relacionamentos e essas cardinalidades — e não outras alternativas possíveis?*
+A estrutura do modelo foi definida com base nos principais processos que identificamos na Peg Vest Jeans, focando em representar no banco de dados apenas os dados que realmente fazem parte da rotina da empresa. Por isso, modelamos entidades para clientes, funcionários, produtos, estoque e para as operações de venda e pedido, afinal, são esses pontos que sustentam o cadastro, a venda, o controle de estoque, o envio de pedidos, as entregas e as transferências.
+
+Para a definição dos atributos, o foco foi guardar só o que é necessário para cada entidade. No caso de clientes, por exemplo, colocamos dados essenciais como nome, CPF, telefone e endereço; já para produtos, mantivemos as informações de cadastro, preço e quantidade em estoque. Essa divisão é importante para manter o banco organizado e evitar colocar dados de contextos diferentes dentro de uma mesma tabela.
+
+Os relacionamentos e as cardinalidades foram mapeados seguindo o fluxo de trabalho da loja. Um cliente pode fazer várias compras ao longo do tempo, e os funcionários entram registrando e finalizando o atendimento. Os produtos se conectam tanto ao estoque quanto às vendas, o que permite checar a disponibilidade e dar baixa nos itens assim que uma venda é concluída. Com isso, as ligações refletem a lógica do negócio sem criar vínculos desnecessários no esquema.
+
+No fim, a ideia dessa modelagem foi evitar uma complexidade desnecessária, mantendo os dados bem separados pela sua finalidade. O resultado é uma estrutura bem organizada, que reflete os processos atuais da Peg Vest Jeans e serve como uma base sólida para as próximas fases do projeto.
 
 ---
 
