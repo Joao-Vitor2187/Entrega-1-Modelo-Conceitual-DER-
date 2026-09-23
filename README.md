@@ -125,118 +125,106 @@ Modelagem de um sistema de gestão de informações para uma organização de pe
 
 ---
 
-## 5. Dicionário de Dados Conceitual (Preliminar)
+# 5. Dicionário de Dados Conceitual (Preliminar)
 
-### 5.1 Funcionário
+### Funcionário
 
-| Atributo         | Tipo físico| Obrigatório? | Descrição                                       | Regra de negócio associada                          |
-| ---------------- |---|-|---------------------------------------------- | --------------------------------------------------- |
-| `id_funcionario` | ||Identificador único do funcionário              | Deve ser único e obrigatório                        |
-| `nome_funcionário`| || Nome completo do funcionário                    | Obrigatório                                         |
-| `cpf`            | ||CPF utilizado para identificação do funcionário | Obrigatório e não deve ser duplicado                |
-| `cargo`          | ||Função exercida pelo funcionário na empresa     | Define as permissões de acesso ao sistema           |
-| `telefone`       | ||Telefone de contato do funcionário              | Deve ser informado no cadastro                      |
-| `email`          | ||E-mail do funcionário                           | Deve possuir formato válido                         |
-| `data_admissao`  | ||Data em que o funcionário foi contratado        | Obrigatória                                         |
-| `status`         | ||Situação atual do funcionário                   | Deve indicar se o funcionário está ativo ou inativo |
+| Atributo | Tipo físico | Obrigatório | Significado e relevância |
+|---|---|---|---|
+| ID_FUNCIONARIO | integer | Sim (PK) | Código de identificação do registro; não sofre operação matemática. |
+| NM_FUNCIONARIO | varchar(120) | Sim | Nome completo do colaborador; identifica o responsável pelo atendimento no pedido. |
+| CPF | varchar(14) | Sim | Documento civil único; usado para validação de identidade e vínculo trabalhista. |
+| DS_CARGO | varchar(60) | Sim | Função exercida pelo colaborador; define permissões e responsabilidades no fluxo de vendas. |
+| NR_TELEFONE | varchar(20) | Não | Contato para comunicação interna e emergências. |
+| DS_EMAIL | varchar(120) | Não | Canal de comunicação institucional e login no sistema. |
+| DT_ADMISSAO | date | Sim | Data de início do vínculo empregatício; usada para cálculo de tempo de casa e histórico funcional. |
+| IN_ATIVO | boolean | Sim | Indicador de vínculo ativo; funcionário inativo perde acesso ao sistema sem apagar seu histórico de pedidos atendidos. |
 
-### 5.2 Cliente
+### Cliente
 
-| Atributo       |Tipo físico| Obrigatório? | Descrição                                           | Regra de negócio associada                                          |
-| -------------- |- |-|-------------------------------------------------- | ------------------------------------------------------------------- |
-| `id_cliente`   | ||Identificador único do cliente                      | Deve ser único e obrigatório                                        |
-| `nome`         | ||Nome ou razão social do cliente                     | Obrigatório                                                         |
-| `cpf_cnpj`     | ||Documento de identificação do cliente               | Obrigatório e não deve ser duplicado                                |
-| `telefone`     | ||Telefone de contato do cliente                      | Utilizado para contato e cadastro                                   |
-| `email`        | ||E-mail do cliente                                   | Deve possuir formato válido                                         |
-| `endereco`     | ||Endereço cadastrado do cliente                      | Deve ser informado quando necessário para entrega                   |
-| `tipo_cliente` | ||Identifica se o cliente é pessoa física ou jurídica | Deve permitir diferenciar clientes de acordo com o tipo de cadastro |
-| `status`       | ||Situação do cadastro do cliente                     | Deve indicar se o cadastro está ativo ou inativo                    |
+| Atributo | Tipo físico | Obrigatório | Significado e relevância |
+|---|---|---|---|
+| ID_CLIENTE | integer | Sim (PK) | Código de identificação do registro; não sofre operação matemática. |
+| NM_CLIENTE | varchar(150) | Sim | Nome ou razão social do cliente; identifica-o nos pedidos e documentos fiscais. |
+| NR_CPF_CNPJ | varchar(18) | Sim | Documento civil ou empresarial único; utilizado para emissão de nota fiscal e controle de duplicidade de cadastro. |
+| NR_TELEFONE | varchar(20) | Não | Contato para confirmação de pedidos e entregas. |
+| DS_EMAIL | varchar(120) | Não | Canal de comunicação para notificações de pedido e pagamento. |
+| DS_ENDERECO | varchar(200) | Sim | Endereço de entrega e/ou cobrança vinculado ao pedido. |
+| TP_CLIENTE | char(1) (F, J) | Sim | Indica se o cliente é Pessoa Física ou Pessoa Jurídica; define regras fiscais e documentação exigida. |
+| IN_ATIVO | boolean | Sim | Indicador de cadastro ativo; cliente inativo não pode realizar novos pedidos, mas mantém o histórico preservado. |
 
-### 5.3 Empresa
+### Empresa
 
-| Atributo        |Tipo físico| Obrigatório?  |Descrição                             | Regra de negócio associada                      |
-| --------------- | -|-|------------------------------------ | ----------------------------------------------- |
-| `id_empresa`    | ||Identificador único da empresa        | Deve ser único e obrigatório                    |
-| `razao_social`  | ||Nome empresarial da empresa           | Obrigatório                                     |
-| `cnpj`          | ||Cadastro Nacional da Pessoa Jurídica  | Obrigatório e não deve ser duplicado            |
-| `nome_fantasia` | ||Nome comercial utilizado pela empresa | Pode ser utilizado para identificação comercial |
-| `endereco`      | ||Endereço da empresa                   | Obrigatório                                     |
-| `telefone`      | ||Telefone comercial da empresa         | Deve ser informado no cadastro                  |
-| `email`         | ||E-mail comercial da empresa           | Deve possuir formato válido                     |
+| Atributo | Tipo físico | Obrigatório | Significado e relevância |
+|---|---|---|---|
+| ID_EMPRESA | integer | Sim (PK) | Código de identificação do registro institucional; não sofre operação matemática. |
+| DS_RAZAO_SOCIAL | varchar(150) | Sim | Nome jurídico oficial da empresa; utilizado em documentos fiscais. |
+| NR_CNPJ | varchar(18) | Sim | Identificador único da pessoa jurídica perante a Receita Federal. |
+| NM_FANTASIA | varchar(150) | Não | Nome comercial utilizado na comunicação com clientes. |
+| DS_ENDERECO | varchar(200) | Sim | Endereço fiscal/comercial da sede. |
+| NR_TELEFONE | varchar(20) | Não | Contato institucional. |
+| DS_EMAIL | varchar(120) | Não | Canal de comunicação institucional. |
 
-### 5.4 Estoque
+### Estoque
 
-| Atributo                |Tipo físico| Obrigatório?  |Descrição                                           | Regra de negócio associada                        |
-| ----------------------- | -|-|------------------------------------------------- | ------------------------------------------------- |
-| `id_estoque`            | ||Identificador único do registro de estoque          | Deve ser único e obrigatório                      |
-| `id_produto`            | ||Identifica o produto relacionado ao estoque         | Deve corresponder a um produto cadastrado         |
-| `quantidade_disponivel` | ||Quantidade disponível do produto em estoque         | Não pode ser negativa                             |
-| `quantidade_minima`     | ||Quantidade mínima definida para controle do estoque | Deve ser igual ou maior que zero                  |
-| `localizacao`           | ||Local onde o produto está armazenado                | Deve identificar o local de armazenamento         |
-| `data_atualizacao`      | ||Data da última atualização do estoque               | Deve ser atualizada após movimentações de estoque |
+| Atributo | Tipo físico | Obrigatório | Significado e relevância |
+|---|---|---|---|
+| ID_ESTOQUE | integer | Sim (PK) | Código de identificação do registro de controle de estoque; não sofre operação matemática. |
+| ID_PRODUTO | integer | Sim (FK) | Referência ao produto controlado; vincula o registro de estoque à entidade Produto. |
+| QT_DISPONIVEL | integer | Sim | Quantidade física disponível para venda no momento da consulta; usada para bloquear pedidos sem cobertura. |
+| QT_MINIMA | integer | Sim | Limite mínimo aceitável em estoque; utilizado como gatilho de alerta para reposição junto a fornecedores. |
+| DT_ATUALIZACAO | datetime | Sim | Data e hora da última movimentação; garante rastreabilidade e consistência do saldo. |
 
-### 5.5 Pedido
+### Pedido
 
-| Atributo         |Tipo físico| Obrigatório? | Descrição                                             | Regra de negócio associada                                                       |
-| ---------------- |-| -|---------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `id_pedido`      || |Identificador único do pedido                         | Deve ser único e obrigatório                                                     |
-| `id_cliente`     || |Identifica o cliente responsável pelo pedido          | O pedido deve estar associado a um cliente cadastrado                            |
-| `id_funcionario` |||Identifica o funcionário responsável pelo atendimento | Deve corresponder a um funcionário autorizado                                    |
-| `data_pedido`    || |Data em que o pedido foi realizado                    | Obrigatória                                                                      |
-| `status`         || |Situação atual do pedido                              | Deve representar etapas como pendente, pago, enviado, concluído ou cancelado     |
-| `tipo_venda`     || |Identifica se o pedido é de atacado ou varejo         | Deve permitir diferenciar as regras comerciais                                   |
-| `valor_total`    || |Valor total do pedido                                 | Deve ser calculado de acordo com os produtos, quantidades e descontos aplicáveis |
-| `data_envio`     || |Data em que o pedido foi enviado                      | Deve ser registrada quando o pedido for enviado                                  |
+| Atributo | Tipo físico | Obrigatório | Significado e relevância |
+|---|---|---|---|
+| ID_PEDIDO | integer | Sim (PK) | Código de identificação do registro; não sofre operação matemática. |
+| ID_CLIENTE | integer | Sim (FK) | Referência ao cliente que originou a compra. |
+| ID_FUNCIONARIO | integer | Sim (FK) | Referência ao colaborador responsável pelo atendimento; garante rastreabilidade e auditoria. |
+| DT_PEDIDO | date | Sim | Data de abertura do pedido; base para cálculo de prazos e relatórios de vendas. |
+| DS_STATUS | varchar(20) | Sim | Situação atual do pedido (ex: em processamento, enviado, cancelado); orienta o fluxo operacional. |
+| TP_VENDA | varchar(30) | Sim | Modalidade da venda (ex: presencial, online); usada para segmentação de relatórios comerciais. |
+| VL_TOTAL | decimal(10,2) | Sim | Valor total do pedido; base de conferência com os registros de Pagamento. |
+| DT_ENVIO | date | Não | Data de expedição da mercadoria; utilizada para cálculo de prazo de entrega. |
 
-**Regras relacionadas:** pedidos de atacado devem possuir no mínimo 15 peças; pedidos de varejo não possuem quantidade mínima. Um pedido somente pode ser cancelado antes do envio.
+### Fornecedor
 
-### 5.6 Fornecedor
+| Atributo | Tipo físico | Obrigatório | Significado e relevância |
+|---|---|---|---|
+| ID_FORNECEDOR | integer | Sim (PK) | Código de identificação do registro; não sofre operação matemática. |
+| NM_FORNECEDOR | varchar(150) | Sim | Nome ou razão social do fornecedor; identifica a origem dos produtos adquiridos. |
+| NR_CNPJ | varchar(18) | Sim | Identificador único da pessoa jurídica; evita duplicidade de cadastro. |
+| NR_TELEFONE | varchar(20) | Não | Contato comercial para negociação e reposição. |
+| DS_EMAIL | varchar(120) | Não | Canal de comunicação para pedidos de compra. |
+| DS_ENDERECO | varchar(200) | Sim | Endereço utilizado para logística de recebimento de mercadorias. |
+| IN_ATIVO | boolean | Sim | Indicador de parceria ativa; fornecedor inativo não pode ser vinculado a novas reposições, mas mantém histórico de fornecimento. |
 
-| Atributo        |Tipo físico| Obrigatório?  |Descrição                          | Regra de negócio associada                  |
-| --------------- | -|-|-------------------------------- | ------------------------------------------- |
-| `id_fornecedor` | ||Identificador único do fornecedor  | Deve ser único e obrigatório                |
-| `nome`          | ||Nome ou razão social do fornecedor | Obrigatório                                 |
-| `cnpj`          | ||CNPJ do fornecedor                 | Obrigatório e não deve ser duplicado        |
-| `telefone`      | ||Telefone de contato do fornecedor  | Deve ser informado no cadastro              |
-| `email`         | ||E-mail do fornecedor               | Deve possuir formato válido                 |
-| `endereco`      | ||Endereço do fornecedor             | Deve ser registrado para controle cadastral |
-| `status`        | ||Situação do fornecedor             | Deve indicar se está ativo ou inativo       |
+### Pagamento
 
-### 5.7 Produto
+| Atributo | Tipo físico | Obrigatório | Significado e relevância |
+|---|---|---|---|
+| ID_PAGAMENTO | integer | Sim (PK) | Código de identificação do registro; não sofre operação matemática. |
+| ID_PEDIDO | integer | Sim (FK) | Referência ao pedido ao qual o pagamento está vinculado. |
+| DT_PAGAMENTO | date | Sim | Data de efetivação do pagamento; usada para conciliação financeira. |
+| TP_FORMA_PAGAMENTO | varchar(30) | Sim | Meio utilizado (ex: cartão, boleto, pix); relevante para relatórios financeiros e taxas. |
+| VL_PAGAMENTO | decimal(10,2) | Sim | Valor efetivamente pago; comparado ao valor total do pedido para conferência de quitação. |
+| DS_STATUS | varchar(20) | Sim | Situação do pagamento (ex: pendente, aprovado, estornado); orienta liberação do pedido. |
+| VL_DESCONTO | decimal(5,2) | Não | Percentual ou valor de desconto aplicado; impacta o valor final recebido e a análise de margem. |
 
-| Atributo        |Tipo físico| Obrigatório? | Descrição                                        | Regra de negócio associada                                  |
-| --------------- | -|-|---------------------------------------------- | ----------------------------------------------------------- |
-| `id_produto`    | ||Identificador único do produto                   | Deve ser único e obrigatório                                |
-| `nome`          | ||Nome do produto                                  | Obrigatório                                                 |
-| `descricao`     | ||Descrição das características do produto         | Deve permitir identificar o produto                         |
-| `categoria`     | ||Categoria à qual o produto pertence              | Obrigatória                                                 |
-| `tamanho`       | ||Tamanho disponível do produto                    | Deve corresponder aos tamanhos comercializados pela empresa |
-| `cor`           | ||Cor do produto                                   | Deve ser informada no cadastro                              |
-| `preco_venda`   | ||Preço do produto para venda no varejo            | Deve ser maior que zero                                     |
-| `preco_atacado` | ||Preço utilizado nas vendas por atacado           | Deve ser maior que zero e seguir a política comercial       |
-| `id_fornecedor` | ||Identifica o fornecedor responsável pelo produto | Deve corresponder a um fornecedor cadastrado                |
-| `status`        | ||Situação do produto                              | Deve indicar se o produto está ativo ou inativo             |
+### Produto
 
-**Regras relacionadas:** um produto não pode ser vendido quando não houver quantidade disponível em estoque. Produtos inativos não devem ser utilizados em novas vendas.
-
-### 5.8 Pagamento
-
-| Atributo            |Tipo físico| Obrigatório? | Descrição                                    | Regra de negócio associada                                                       |
-| ------------------- | -|-|------------------------------------------ | -------------------------------------------------------------------------------- |
-| `id_pagamento`      | ||Identificador único do pagamento             | Deve ser único e obrigatório                                                     |
-| `id_pedido`         | ||Identifica o pedido relacionado ao pagamento | Deve corresponder a um pedido existente                                          |
-| `data_pagamento`    | ||Data em que o pagamento foi realizado        | Obrigatória quando o pagamento for confirmado                                    |
-| `forma_pagamento`   | ||Forma utilizada para realizar o pagamento    | Deve permitir identificar formas como Pix, cartão ou outras aceitas pela empresa |
-| `valor`             | ||Valor pago pelo cliente                      | Deve corresponder ao valor devido após os descontos aplicáveis                   |
-| `status`            | ||Situação do pagamento                        | Deve indicar, por exemplo, pendente, confirmado ou cancelado                     |
-| `desconto_aplicado` | ||Valor do desconto aplicado ao pagamento      | Para pagamentos via Pix, deve aplicar o desconto de 5%                           |
-
-**Regras relacionadas:** a compra somente é efetuada após a confirmação do pagamento.
+| Atributo | Tipo físico | Obrigatório | Significado e relevância |
+|---|---|---|---|
+| ID_PRODUTO | integer | Sim (PK) | Código de identificação do registro; não sofre operação matemática. |
+| QT_DISPONIVEL | integer | Sim | Quantidade disponível associada ao produto; espelha o saldo controlado em Estoque. |
+| QT_MINIMA | integer | Sim | Quantidade mínima de referência para o produto; utilizada como parâmetro de reposição. |
+| DS_LOCALIZACAO | varchar(60) | Não | Posição física do produto no armazém (ex: corredor/prateleira); agiliza a separação de pedidos. |
+| DT_ATUALIZACAO | datetime | Sim | Data e hora da última alteração cadastral do produto. | 
 
 ---
 
-### 5.9 Relação entre o Dicionário de Dados e as Regras de Negócio
+### Relação entre o Dicionário de Dados e as Regras de Negócio
 
 Os atributos apresentados foram definidos considerando as regras de funcionamento da loja. Dessa forma, o dicionário serve como uma base para a construção do modelo conceitual e das próximas etapas da modelagem do banco de dados.
 
@@ -254,276 +242,40 @@ Os exemplos de valores eventualmente utilizados para representar os atributos de
 
 
 ---
-6. Modelagem Conceitual (Entidades, Atributos, Relacionamentos)
-
-A modelagem conceitual tem como objetivo representar as principais informações do sistema, suas características e os relacionamentos existentes entre elas. O modelo é composto pelas entidades Funcionário, Cliente, Empresa, Estoque, Pedido, Fornecedor e Pagamento.
-
-## 6.1 Entidades reconhecidas
-
-#### Funcionário
-
-Representa os colaboradores responsáveis pelas atividades internas da empresa, podendo estar envolvidos no atendimento aos clientes e no registro de pedidos.
-
-##### Atributos:
-
-- id_funcionario — identificador único do funcionário.
-
-- nome_funcionario — nome completo do funcionário.
-
-- cpf_funcionario — CPF do funcionário.
-
-- cargo_funcionario — cargo ou função exercida.
-
-- telefone_funcionario — telefone para contato.
-
-- email_funcionario — endereço de e-mail.
-
-- data_admissão — data em que o funcionário foi admitido.
-
-- status_funcionario — situação atual do funcionário, como ativo ou inativo.
-
-### Cliente
-
-Representa as pessoas físicas ou jurídicas que realizam compras ou mantêm relacionamento comercial com a empresa.
-
-#### Atributos:
-
-- id_cliente — identificador único do cliente.
-
-- nome_cliente — nome do cliente ou responsável.
-
-- cpf_cnpj — documento de identificação do cliente.
-
-- telefone_cliente — telefone para contato.
-
-- email_cliente — endereço de e-mail.
-
-- endereço_Cliente — endereço do cliente.
-
-- tipo_cliente — identifica se o cliente é pessoa física ou jurídica.
-
-- status_cliente — situação do cadastro do cliente.
-
-## Empresa
-
-Representa a organização responsável pela operação do sistema e pelo gerenciamento das atividades comerciais.
-
-#### Atributos:
-
-- id_empresa — identificador único da empresa.
-
-- razao_social — razão social da empresa.
-
-- cnpj_empresa — CNPJ da empresa.
-
-- nome_fantasia — nome comercial utilizado pela empresa.
-
-- endereco_empresa — endereço da empresa.
-
-- telefone_empresa — telefone de contato.
-
-- email_empresa — endereço de e-mail da empresa.
-
-## Estoque
-
-Representa o controle da quantidade disponível dos produtos, permitindo acompanhar os níveis de estoque e sua atualização.
-
-#### Atributos:
-
-- id_estoque — identificador único do registro de estoque.
-
-- id_produto — identificador do produto relacionado ao estoque.
-
-- quantidade_disponivel — quantidade disponível do produto.
-
-- quantidade_minima — quantidade mínima desejada para o produto.
-
-- data_atualizacao — data da última atualização das informações do estoque.
-
-## Pedido
-
-Representa uma solicitação de compra realizada por um cliente e registrada por um funcionário.
-
-#### Atributos:
-
-- id_pedido — identificador único do pedido.
-
-- id_cliente — identifica o cliente responsável pelo pedido.
-
-- id_funcionario — identifica o funcionário responsável pelo registro ou atendimento.
-
-- data_pedido — data em que o pedido foi realizado.
-
-- status_pedido — situação atual do pedido.
-
-- tipo_venda — modalidade ou tipo da venda realizada.
-
-- valor_total — valor total do pedido.
-
-- data_envio — data em que o pedido foi enviado.
-
-## Fornecedor
-
-Representa as empresas ou pessoas responsáveis pelo fornecimento de produtos ou materiais para a organização.
-
-#### Atributos:
-
-- id_fornecedor — identificador único do fornecedor.
-
-- nome_fornecedor — nome ou razão social do fornecedor.
-
-- cnpj_fornecedor — CNPJ do fornecedor.
-
-- telefone_fornecedor — telefone para contato.
-
-- email_fornecedor — endereço de e-mail.
-
-- endereço_fornecedor — endereço do fornecedor.
-
-- status_fornecedor — situação atual do fornecedor.
-
-## Pagamento
-
-Representa os pagamentos associados aos pedidos realizados pelos clientes.
-
-#### Atributos:
-
-- id_pagamento — identificador único do pagamento.
-
-- id_pedido — identifica o pedido ao qual o pagamento está associado.
-
-- data_pagamento — data em que o pagamento foi realizado.
-
-- forma_pagamento — meio utilizado para realizar o pagamento.
-
-- valor_pagamento — valor pago.
-
-- status_pagamento — situação do pagamento.
-
-- desconto_aplicado — valor ou percentual de desconto aplicado ao pagamento.
-
-## 6.3 Relacionamentos pertinentes
-
-### Os principais relacionamentos no modelo são:
-
-#### Cliente — Pedido
-
-- Um Cliente pode realizar vários Pedidos, enquanto cada Pedido pertence a um único Cliente.
-
-Cardinalidade: Cliente 1 : N Pedido
-
-#### Funcionário — Pedido
-
-- Um Funcionário pode registrar ou atender vários Pedidos, enquanto cada Pedido é associado a um funcionário responsável.
-
-Cardinalidade: Funcionário 1 : N Pedido
-
-#### Pedido — Pagamento
-
-- Um Pedido pode possuir um ou mais registros de Pagamento. Cada pagamento está relacionado a um pedido específico.
-
-Cardinalidade: Pedido 1 : N Pagamento
-
-#### Produto — Estoque
-
-- Um produto pertence a somente um estoque. E o estoque possui um ou mais produtos 
-
-Cardinalidade : Produto N : 1 Estoque
-
-#### Fornecedor — Produto
-  
-- Um ou mais fornecedores, fornecem um ou mais produtos
-
-Cardinalidade: Fornecedor N : N Produto
-
-#### Empresa — Funcionário
-
-- Uma Empresa pode possuir vários Funcionários, enquanto cada funcionário está vinculado a uma empresa.
-
-Cardinalidade: Empresa 1 : N Funcionário
-
-#### Empresa — Cliente
-
-- Uma empresa atende um ou mais clientes
-
-Cardinalidade: Empresa 1 : N clientes
-
-6.4 Resumo dos relacionamentos
-Relacionamento	Cardinalidade	Descrição
-Cliente — Pedido	1:N	Um cliente pode realizar vários pedidos.
-Funcionário — Pedido	1:N	Um funcionário pode registrar vários pedidos.
-Pedido — Pagamento	1:N	Um pedido pode possuir registros de pagamento.
-Produto — Estoque	1:1	Um produto possui seu controle de estoque.
-Fornecedor — Produto	N:N	Um fornecedor pode fornecer vários produtos e um produto pode ter vários fornecedores.
-Empresa — Funcionário	1:N	Uma empresa pode possuir vários funcionários.
-Empresa — Cliente	1:N*	Uma empresa pode possuir/atender vários clientes.
-
-* A cardinalidade deve ser confirmada de acordo com a regra de negócio do sistema.
-
-6.5 Restrições e políticas organizacionais
-
-As seguintes regras e restrições são aplicadas ao modelo conceitual:
-
-Cada entidade deve possuir um identificador único (id_*).
-
-O CPF de um funcionário deve ser único no cadastro.
-
-O CNPJ de uma empresa deve ser único.
-
-O CNPJ de um fornecedor deve ser único.
-
-O campo cpf_cnpj do cliente deve respeitar o formato correspondente ao tipo de cliente.
-
-Um pedido deve estar associado a um cliente existente.
-
-Um pedido deve estar associado ao funcionário responsável pelo seu registro.
-
-Um pagamento deve estar associado a um pedido existente.
-
-O valor de um pedido deve ser igual ou superior a zero.
-
-O valor de um pagamento deve ser igual ou superior a zero.
-
-quantidade_disponivel e quantidade_minima do estoque não devem possuir valores negativos.
-
-A data_envio não deve ser anterior à data_pedido.
-
-A data_pagamento deve ser compatível com a existência do pedido e com o fluxo de pagamento definido pela organização.
-
-Registros com status devem utilizar valores previamente definidos pela regra de negócio, evitando informações inconsistentes.
-
-Um cliente ou funcionário inativo não deve ser utilizado para novos processos que exijam cadastro ativo, conforme as políticas da organização.
-
-A baixa ou atualização do estoque deve ocorrer de acordo com a confirmação do pedido e as regras de venda estabelecidas.
-
-Dados de contato, como telefone e e-mail, devem seguir formatos válidos.
-
-Informações cadastrais e financeiras devem ser protegidas contra alterações indevidas, respeitando as permissões dos usuários do sistema.
-
-
-
-## 6. Modelagem Conceitual (Entidades, Atributos, Relacionamentos)
-*(vale 7,5% na dimensão conceitual)*
-| Entidade | Atributos | Relaciona-se com | Cardinalidade | Justificativa |
-|---|---|---|---|---|
-| Empresa |---| Cliente |1:N - Uma empresa atende vários clientes. | |
-| Empresa |---| Funcionário | 1:N - Uma empresa emprega vários funcionários | |
-| Empresa |---| Fornecedor |  1:N - Uma empresa tem vários fornecedores | |
-| Funcionário |---| Cliente | 1:N - Um funcionário atende vários clientes. |  |
-| Fornecedor |---| d | |  |
-| Produto |---| c | | |
-| Estoque |---| d  | | |
-| Pedido |---| s | | |
-| Pagamento |---| d | |  |
-
-
-
-
-
-- **Entidades reconhecidas:** *liste e justifique brevemente cada uma.*
-- **Atributos e classificações:** *quais atributos pertencem a cada entidade.*
-- **Relacionamentos pertinentes:** *como as entidades se conectam.*
-- **Restrições e políticas organizacionais aplicadas ao modelo.**
+# 6. Modelagem Conceitual (Entidades, Atributos, Relacionamentos)
+### 6.1 Entidades reconhecidas
+ Entidade | Justificativa |
+|---|---|
+| **Funcionário** | Representa os colaboradores da empresa que realizam atendimentos e processam pedidos. Necessário para controle de responsabilidade e rastreabilidade das operações. |
+| **Cliente** | Representa as pessoas físicas ou jurídicas que efetuam compras. Essencial para o relacionamento comercial e emissão de pedidos. |
+| **Empresa** | Representa a organização proprietária do sistema (dados institucionais/fiscais), usada como referência corporativa (ex: emissão de documentos fiscais). |
+| **Estoque** | Controla a quantidade física disponível de cada produto, permitindo gestão de reposição e disponibilidade para venda. |
+| **Pedido** | Registra as transações de venda realizadas entre cliente e empresa, intermediadas por um funcionário. |
+| **Fornecedor** | Representa as entidades externas responsáveis pelo fornecimento de produtos, necessário para reposição de estoque. |
+| **Pagamento** | Registra as transações financeiras associadas a um pedido, permitindo controle de recebimentos. |
+| **Produto** | Representa os itens comercializáveis pela empresa, base para pedidos, estoque e fornecimento. |
+
+## 6.1 Relacionamentos Pertinentes
+
+| Relacionamento | Cardinalidade | Descrição |
+|---|---|---|
+| **Funcionário — Pedido** | 1:N | Um funcionário pode registrar/atender vários pedidos; cada pedido é atendido por apenas um funcionário. |
+| **Cliente — Pedido** | 1:N | Um cliente pode realizar vários pedidos; cada pedido pertence a um único cliente. |
+| **Pedido — Pagamento** | 1:N (ou 1:1, conforme regra de negócio) | Um pedido pode ter um ou mais pagamentos (ex: parcelamento); cada pagamento está vinculado a um único pedido. |
+| **Produto — Estoque** | 1:1 | Cada produto possui um registro de controle de estoque associado. |
+| **Fornecedor — Produto** | N:M | Um fornecedor pode fornecer vários produtos, e um produto pode ser fornecido por mais de um fornecedor (requer entidade associativa, ex: "Fornecimento"). |
+| **Empresa — Pedido** | 1:N | A empresa (entidade institucional) é a parte vendedora em todos os pedidos registrados no sistema. |
+---
+
+## 6.2 Restrições e Políticas Organizacionais
+
+- **Integridade referencial:** todo `id_cliente`, `id_funcionario`, `id_produto` e `id_pedido` referenciado em outra entidade deve existir previamente na entidade de origem (não é permitido pedido órfão sem cliente ou funcionário válido).
+- **Unicidade:** os campos `cpf` (Funcionário), `cpf_cnpj` (Cliente), `cnpj` (Empresa e Fornecedor) devem ser únicos no sistema, evitando duplicidade de cadastro.
+- **Status obrigatório:** entidades como Funcionário, Cliente e Fornecedor possuem o atributo `status`, permitindo inativação lógica em vez de exclusão física dos registros (soft delete), preservando o histórico de pedidos e pagamentos.
+- **Controle de estoque mínimo:** o atributo `quantidade_minima` deve ser utilizado como gatilho de alerta para reposição junto a fornecedores, impedindo venda quando `quantidade_disponivel` for insuficiente.
+- **Consistência financeira:** o `valor_total` do Pedido deve ser validado em relação à soma dos valores pagos em Pagamento, considerando o `desconto_aplicado`.
+- **Rastreabilidade:** todo pedido deve manter o vínculo com o funcionário responsável pelo atendimento, para fins de auditoria e avaliação de desempenho.
+- **Confidencialidade de dados:** informações pessoais (CPF, telefone, email) devem seguir políticas de proteção de dados (ex: LGPD), com acesso restrito conforme perfil do usuário do sistema.
 
 ---
 
