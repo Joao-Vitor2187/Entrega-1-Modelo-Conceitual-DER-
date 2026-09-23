@@ -232,7 +232,7 @@ Modelagem de um sistema de gestão de informações para uma organização de pe
 | `status`            | ||Situação do pagamento                        | Deve indicar, por exemplo, pendente, confirmado ou cancelado                     |
 | `desconto_aplicado` | ||Valor do desconto aplicado ao pagamento      | Para pagamentos via Pix, deve aplicar o desconto de 5%                           |
 
-**Regras relacionadas:** a compra somente é efetuada após a confirmação do pagamento. O desconto de 5% é aplicado somente para pagamentos realizados via Pix.
+**Regras relacionadas:** a compra somente é efetuada após a confirmação do pagamento.
 
 ---
 
@@ -340,146 +340,113 @@ Representa o controle da quantidade disponível dos produtos, permitindo acompan
 
 - data_atualizacao — data da última atualização das informações do estoque.
 
-Observação: o atributo id_produto pressupõe a existência de uma entidade Produto, que não foi listada entre as entidades fornecidas. Caso Produto faça parte do escopo do sistema, ela deverá ser adicionada ao modelo conceitual.
-
-Pedido
+## Pedido
 
 Representa uma solicitação de compra realizada por um cliente e registrada por um funcionário.
 
-Atributos:
+#### Atributos:
 
-id_pedido — identificador único do pedido.
+- id_pedido — identificador único do pedido.
 
-id_cliente — identifica o cliente responsável pelo pedido.
+- id_cliente — identifica o cliente responsável pelo pedido.
 
-id_funcionario — identifica o funcionário responsável pelo registro ou atendimento.
+- id_funcionario — identifica o funcionário responsável pelo registro ou atendimento.
 
-data_pedido — data em que o pedido foi realizado.
+- data_pedido — data em que o pedido foi realizado.
 
-status_pedido — situação atual do pedido.
+- status_pedido — situação atual do pedido.
 
-tipo_venda — modalidade ou tipo da venda realizada.
+- tipo_venda — modalidade ou tipo da venda realizada.
 
-valor_total — valor total do pedido.
+- valor_total — valor total do pedido.
 
-data_envio — data em que o pedido foi enviado.
+- data_envio — data em que o pedido foi enviado.
 
-Fornecedor
+## Fornecedor
 
 Representa as empresas ou pessoas responsáveis pelo fornecimento de produtos ou materiais para a organização.
 
-Atributos:
+#### Atributos:
 
-id_fornecedor — identificador único do fornecedor.
+- id_fornecedor — identificador único do fornecedor.
 
-nome_fornecedor — nome ou razão social do fornecedor.
+- nome_fornecedor — nome ou razão social do fornecedor.
 
-cnpj_fornecedor — CNPJ do fornecedor.
+- cnpj_fornecedor — CNPJ do fornecedor.
 
-telefone_fornecedor — telefone para contato.
+- telefone_fornecedor — telefone para contato.
 
-email_fornecedor — endereço de e-mail.
+- email_fornecedor — endereço de e-mail.
 
-endereço_fornecedor — endereço do fornecedor.
+- endereço_fornecedor — endereço do fornecedor.
 
-status_fornecedor — situação atual do fornecedor.
+- status_fornecedor — situação atual do fornecedor.
 
-Pagamento
+## Pagamento
 
 Representa os pagamentos associados aos pedidos realizados pelos clientes.
 
-Atributos:
+#### Atributos:
 
-id_pagamento — identificador único do pagamento.
+- id_pagamento — identificador único do pagamento.
 
-id_pedido — identifica o pedido ao qual o pagamento está associado.
+- id_pedido — identifica o pedido ao qual o pagamento está associado.
 
-data_pagamento — data em que o pagamento foi realizado.
+- data_pagamento — data em que o pagamento foi realizado.
 
-forma_pagamento — meio utilizado para realizar o pagamento.
+- forma_pagamento — meio utilizado para realizar o pagamento.
 
-valor_pagamento — valor pago.
+- valor_pagamento — valor pago.
 
-status_pagamento — situação do pagamento.
+- status_pagamento — situação do pagamento.
 
-desconto_aplicado — valor ou percentual de desconto aplicado ao pagamento.
+- desconto_aplicado — valor ou percentual de desconto aplicado ao pagamento.
 
-6.2 Classificação dos atributos
+## 6.3 Relacionamentos pertinentes
 
-Os atributos podem ser classificados de acordo com sua função no modelo:
+### Os principais relacionamentos no modelo são:
 
-Entidade	Atributo-chave	Atributos descritivos	Possíveis atributos de relacionamento
-Funcionário	id_funcionario	nome, cpf, cargo, telefone, email, data_admissão, status	—
-Cliente	id_cliente	nome, cpf_cnpj, telefone, email, endereço, tipo_cliente, status	—
-Empresa	id_empresa	razao_social, cnpj, nome_fantasia, endereco, telefone, email	—
-Estoque	id_estoque	quantidade_disponivel, quantidade_minima, data_atualizacao	id_produto
-Pedido	id_pedido	data_pedido, status, tipo_venda, valor_total, data_envio	id_cliente, id_funcionario
-Fornecedor	id_fornecedor	nome, cnpj, telefone, email, endereço, status	—
-Pagamento	id_pagamento	data_pagamento, forma_pagamento, valor, status, desconto_aplicado	id_pedido
+#### Cliente — Pedido
 
-Os atributos id_* funcionam como identificadores das entidades. Já os atributos que fazem referência a outra entidade, como id_cliente, id_funcionario e id_pedido, representam associações entre os registros.
-
-6.3 Relacionamentos pertinentes
-
-Os principais relacionamentos identificados no modelo são:
-
-Cliente — Pedido
-
-Um Cliente pode realizar vários Pedidos, enquanto cada Pedido pertence a um único Cliente.
+- Um Cliente pode realizar vários Pedidos, enquanto cada Pedido pertence a um único Cliente.
 
 Cardinalidade: Cliente 1 : N Pedido
 
-Cliente (1) ─────────── (N) Pedido
+#### Funcionário — Pedido
 
-Funcionário — Pedido
-
-Um Funcionário pode registrar ou atender vários Pedidos, enquanto cada Pedido é associado a um funcionário responsável.
+- Um Funcionário pode registrar ou atender vários Pedidos, enquanto cada Pedido é associado a um funcionário responsável.
 
 Cardinalidade: Funcionário 1 : N Pedido
 
-Funcionário (1) ─────── (N) Pedido
+#### Pedido — Pagamento
 
-Pedido — Pagamento
-
-Um Pedido pode possuir um ou mais registros de Pagamento, dependendo das regras de negócio adotadas. Cada pagamento está relacionado a um pedido específico.
+- Um Pedido pode possuir um ou mais registros de Pagamento. Cada pagamento está relacionado a um pedido específico.
 
 Cardinalidade: Pedido 1 : N Pagamento
 
-Pedido (1) ──────────── (N) Pagamento
+#### Produto — Estoque
 
-Produto — Estoque
+- Um produto pertence a somente um estoque. E o estoque possui um ou mais produtos 
 
-O registro de Estoque está associado a um Produto por meio do atributo id_produto. Essa relação permite controlar a quantidade disponível e o nível mínimo de cada produto.
+Cardinalidade : Produto N : 1 Estoque
 
-Cardinalidade sugerida: Produto 1 : 1 Estoque
+#### Fornecedor — Produto
+  
+- Um ou mais fornecedores, fornecem um ou mais produtos
 
-Produto (1) ─────────── (1) Estoque
+Cardinalidade: Fornecedor N : N Produto
 
+#### Empresa — Funcionário
 
-Como a entidade Produto não foi apresentada na lista original, esse relacionamento depende da inclusão dessa entidade no modelo.
-
-Fornecedor — Produto
-
-Embora não exista um atributo que represente diretamente esse relacionamento nas entidades fornecidas, conceitualmente um Fornecedor pode fornecer vários Produtos, e um Produto pode ser fornecido por diferentes Fornecedores.
-
-Cardinalidade sugerida: Fornecedor N : N Produto
-
-Fornecedor (N) ─────── (N) Produto
-
-
-Para implementar esse relacionamento em um modelo lógico/relacional, seria necessário criar uma entidade associativa, como Fornecedor_Produto.
-
-Empresa — Funcionário
-
-Uma Empresa pode possuir vários Funcionários, enquanto cada funcionário está vinculado a uma empresa.
+- Uma Empresa pode possuir vários Funcionários, enquanto cada funcionário está vinculado a uma empresa.
 
 Cardinalidade: Empresa 1 : N Funcionário
 
-Empresa (1) ─────────── (N) Funcionário
+#### Empresa — Cliente
 
-Empresa — Cliente
+- Uma empresa atende um ou mais clientes
 
-Uma Empresa pode possuir ou atender diversos Clientes. A cardinalidade exata depende da regra de negócio adotada, especialmente se o sistema representar uma única empresa ou múltiplas empresas.
+Cardinalidade: Empresa 1 : N clientes
 
 6.4 Resumo dos relacionamentos
 Relacionamento	Cardinalidade	Descrição
