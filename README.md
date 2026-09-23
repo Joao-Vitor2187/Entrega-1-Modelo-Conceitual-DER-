@@ -129,108 +129,108 @@ Modelagem de um sistema de gestão de informações para uma organização de pe
 
 ### 5.1 Funcionário
 
-| Atributo         | Descrição                                       | Regra de negócio associada                          |
-| ---------------- | ----------------------------------------------- | --------------------------------------------------- |
-| `id_funcionario` | Identificador único do funcionário              | Deve ser único e obrigatório                        |
-| `nome`           | Nome completo do funcionário                    | Obrigatório                                         |
-| `cpf`            | CPF utilizado para identificação do funcionário | Obrigatório e não deve ser duplicado                |
-| `cargo`          | Função exercida pelo funcionário na empresa     | Define as permissões de acesso ao sistema           |
-| `telefone`       | Telefone de contato do funcionário              | Deve ser informado no cadastro                      |
-| `email`          | E-mail do funcionário                           | Deve possuir formato válido                         |
-| `data_admissao`  | Data em que o funcionário foi contratado        | Obrigatória                                         |
-| `status`         | Situação atual do funcionário                   | Deve indicar se o funcionário está ativo ou inativo |
+| Atributo         | Tipo físico| Obrigatório? | Descrição                                       | Regra de negócio associada                          |
+| ---------------- |---|-|---------------------------------------------- | --------------------------------------------------- |
+| `id_funcionario` | ||Identificador único do funcionário              | Deve ser único e obrigatório                        |
+| `nome_funcionário`| || Nome completo do funcionário                    | Obrigatório                                         |
+| `cpf`            | ||CPF utilizado para identificação do funcionário | Obrigatório e não deve ser duplicado                |
+| `cargo`          | ||Função exercida pelo funcionário na empresa     | Define as permissões de acesso ao sistema           |
+| `telefone`       | ||Telefone de contato do funcionário              | Deve ser informado no cadastro                      |
+| `email`          | ||E-mail do funcionário                           | Deve possuir formato válido                         |
+| `data_admissao`  | ||Data em que o funcionário foi contratado        | Obrigatória                                         |
+| `status`         | ||Situação atual do funcionário                   | Deve indicar se o funcionário está ativo ou inativo |
 
 ### 5.2 Cliente
 
-| Atributo       | Descrição                                           | Regra de negócio associada                                          |
-| -------------- | --------------------------------------------------- | ------------------------------------------------------------------- |
-| `id_cliente`   | Identificador único do cliente                      | Deve ser único e obrigatório                                        |
-| `nome`         | Nome ou razão social do cliente                     | Obrigatório                                                         |
-| `cpf_cnpj`     | Documento de identificação do cliente               | Obrigatório e não deve ser duplicado                                |
-| `telefone`     | Telefone de contato do cliente                      | Utilizado para contato e cadastro                                   |
-| `email`        | E-mail do cliente                                   | Deve possuir formato válido                                         |
-| `endereco`     | Endereço cadastrado do cliente                      | Deve ser informado quando necessário para entrega                   |
-| `tipo_cliente` | Identifica se o cliente é pessoa física ou jurídica | Deve permitir diferenciar clientes de acordo com o tipo de cadastro |
-| `status`       | Situação do cadastro do cliente                     | Deve indicar se o cadastro está ativo ou inativo                    |
+| Atributo       |Tipo físico| Obrigatório? | Descrição                                           | Regra de negócio associada                                          |
+| -------------- |- |-|-------------------------------------------------- | ------------------------------------------------------------------- |
+| `id_cliente`   | ||Identificador único do cliente                      | Deve ser único e obrigatório                                        |
+| `nome`         | ||Nome ou razão social do cliente                     | Obrigatório                                                         |
+| `cpf_cnpj`     | ||Documento de identificação do cliente               | Obrigatório e não deve ser duplicado                                |
+| `telefone`     | ||Telefone de contato do cliente                      | Utilizado para contato e cadastro                                   |
+| `email`        | ||E-mail do cliente                                   | Deve possuir formato válido                                         |
+| `endereco`     | ||Endereço cadastrado do cliente                      | Deve ser informado quando necessário para entrega                   |
+| `tipo_cliente` | ||Identifica se o cliente é pessoa física ou jurídica | Deve permitir diferenciar clientes de acordo com o tipo de cadastro |
+| `status`       | ||Situação do cadastro do cliente                     | Deve indicar se o cadastro está ativo ou inativo                    |
 
 ### 5.3 Empresa
 
-| Atributo        | Descrição                             | Regra de negócio associada                      |
-| --------------- | ------------------------------------- | ----------------------------------------------- |
-| `id_empresa`    | Identificador único da empresa        | Deve ser único e obrigatório                    |
-| `razao_social`  | Nome empresarial da empresa           | Obrigatório                                     |
-| `cnpj`          | Cadastro Nacional da Pessoa Jurídica  | Obrigatório e não deve ser duplicado            |
-| `nome_fantasia` | Nome comercial utilizado pela empresa | Pode ser utilizado para identificação comercial |
-| `endereco`      | Endereço da empresa                   | Obrigatório                                     |
-| `telefone`      | Telefone comercial da empresa         | Deve ser informado no cadastro                  |
-| `email`         | E-mail comercial da empresa           | Deve possuir formato válido                     |
+| Atributo        |Tipo físico| Obrigatório?  |Descrição                             | Regra de negócio associada                      |
+| --------------- | -|-|------------------------------------ | ----------------------------------------------- |
+| `id_empresa`    | ||Identificador único da empresa        | Deve ser único e obrigatório                    |
+| `razao_social`  | ||Nome empresarial da empresa           | Obrigatório                                     |
+| `cnpj`          | ||Cadastro Nacional da Pessoa Jurídica  | Obrigatório e não deve ser duplicado            |
+| `nome_fantasia` | ||Nome comercial utilizado pela empresa | Pode ser utilizado para identificação comercial |
+| `endereco`      | ||Endereço da empresa                   | Obrigatório                                     |
+| `telefone`      | ||Telefone comercial da empresa         | Deve ser informado no cadastro                  |
+| `email`         | ||E-mail comercial da empresa           | Deve possuir formato válido                     |
 
 ### 5.4 Estoque
 
-| Atributo                | Descrição                                           | Regra de negócio associada                        |
-| ----------------------- | --------------------------------------------------- | ------------------------------------------------- |
-| `id_estoque`            | Identificador único do registro de estoque          | Deve ser único e obrigatório                      |
-| `id_produto`            | Identifica o produto relacionado ao estoque         | Deve corresponder a um produto cadastrado         |
-| `quantidade_disponivel` | Quantidade disponível do produto em estoque         | Não pode ser negativa                             |
-| `quantidade_minima`     | Quantidade mínima definida para controle do estoque | Deve ser igual ou maior que zero                  |
-| `localizacao`           | Local onde o produto está armazenado                | Deve identificar o local de armazenamento         |
-| `data_atualizacao`      | Data da última atualização do estoque               | Deve ser atualizada após movimentações de estoque |
+| Atributo                |Tipo físico| Obrigatório?  |Descrição                                           | Regra de negócio associada                        |
+| ----------------------- | -|-|------------------------------------------------- | ------------------------------------------------- |
+| `id_estoque`            | ||Identificador único do registro de estoque          | Deve ser único e obrigatório                      |
+| `id_produto`            | ||Identifica o produto relacionado ao estoque         | Deve corresponder a um produto cadastrado         |
+| `quantidade_disponivel` | ||Quantidade disponível do produto em estoque         | Não pode ser negativa                             |
+| `quantidade_minima`     | ||Quantidade mínima definida para controle do estoque | Deve ser igual ou maior que zero                  |
+| `localizacao`           | ||Local onde o produto está armazenado                | Deve identificar o local de armazenamento         |
+| `data_atualizacao`      | ||Data da última atualização do estoque               | Deve ser atualizada após movimentações de estoque |
 
 ### 5.5 Pedido
 
-| Atributo         | Descrição                                             | Regra de negócio associada                                                       |
-| ---------------- | ----------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `id_pedido`      | Identificador único do pedido                         | Deve ser único e obrigatório                                                     |
-| `id_cliente`     | Identifica o cliente responsável pelo pedido          | O pedido deve estar associado a um cliente cadastrado                            |
-| `id_funcionario` | Identifica o funcionário responsável pelo atendimento | Deve corresponder a um funcionário autorizado                                    |
-| `data_pedido`    | Data em que o pedido foi realizado                    | Obrigatória                                                                      |
-| `status`         | Situação atual do pedido                              | Deve representar etapas como pendente, pago, enviado, concluído ou cancelado     |
-| `tipo_venda`     | Identifica se o pedido é de atacado ou varejo         | Deve permitir diferenciar as regras comerciais                                   |
-| `valor_total`    | Valor total do pedido                                 | Deve ser calculado de acordo com os produtos, quantidades e descontos aplicáveis |
-| `data_envio`     | Data em que o pedido foi enviado                      | Deve ser registrada quando o pedido for enviado                                  |
+| Atributo         |Tipo físico| Obrigatório? | Descrição                                             | Regra de negócio associada                                                       |
+| ---------------- |-| -|---------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `id_pedido`      || |Identificador único do pedido                         | Deve ser único e obrigatório                                                     |
+| `id_cliente`     || |Identifica o cliente responsável pelo pedido          | O pedido deve estar associado a um cliente cadastrado                            |
+| `id_funcionario` |||Identifica o funcionário responsável pelo atendimento | Deve corresponder a um funcionário autorizado                                    |
+| `data_pedido`    || |Data em que o pedido foi realizado                    | Obrigatória                                                                      |
+| `status`         || |Situação atual do pedido                              | Deve representar etapas como pendente, pago, enviado, concluído ou cancelado     |
+| `tipo_venda`     || |Identifica se o pedido é de atacado ou varejo         | Deve permitir diferenciar as regras comerciais                                   |
+| `valor_total`    || |Valor total do pedido                                 | Deve ser calculado de acordo com os produtos, quantidades e descontos aplicáveis |
+| `data_envio`     || |Data em que o pedido foi enviado                      | Deve ser registrada quando o pedido for enviado                                  |
 
 **Regras relacionadas:** pedidos de atacado devem possuir no mínimo 15 peças; pedidos de varejo não possuem quantidade mínima. Um pedido somente pode ser cancelado antes do envio.
 
 ### 5.6 Fornecedor
 
-| Atributo        | Descrição                          | Regra de negócio associada                  |
-| --------------- | ---------------------------------- | ------------------------------------------- |
-| `id_fornecedor` | Identificador único do fornecedor  | Deve ser único e obrigatório                |
-| `nome`          | Nome ou razão social do fornecedor | Obrigatório                                 |
-| `cnpj`          | CNPJ do fornecedor                 | Obrigatório e não deve ser duplicado        |
-| `telefone`      | Telefone de contato do fornecedor  | Deve ser informado no cadastro              |
-| `email`         | E-mail do fornecedor               | Deve possuir formato válido                 |
-| `endereco`      | Endereço do fornecedor             | Deve ser registrado para controle cadastral |
-| `status`        | Situação do fornecedor             | Deve indicar se está ativo ou inativo       |
+| Atributo        |Tipo físico| Obrigatório?  |Descrição                          | Regra de negócio associada                  |
+| --------------- | -|-|-------------------------------- | ------------------------------------------- |
+| `id_fornecedor` | ||Identificador único do fornecedor  | Deve ser único e obrigatório                |
+| `nome`          | ||Nome ou razão social do fornecedor | Obrigatório                                 |
+| `cnpj`          | ||CNPJ do fornecedor                 | Obrigatório e não deve ser duplicado        |
+| `telefone`      | ||Telefone de contato do fornecedor  | Deve ser informado no cadastro              |
+| `email`         | ||E-mail do fornecedor               | Deve possuir formato válido                 |
+| `endereco`      | ||Endereço do fornecedor             | Deve ser registrado para controle cadastral |
+| `status`        | ||Situação do fornecedor             | Deve indicar se está ativo ou inativo       |
 
 ### 5.7 Produto
 
-| Atributo        | Descrição                                        | Regra de negócio associada                                  |
-| --------------- | ------------------------------------------------ | ----------------------------------------------------------- |
-| `id_produto`    | Identificador único do produto                   | Deve ser único e obrigatório                                |
-| `nome`          | Nome do produto                                  | Obrigatório                                                 |
-| `descricao`     | Descrição das características do produto         | Deve permitir identificar o produto                         |
-| `categoria`     | Categoria à qual o produto pertence              | Obrigatória                                                 |
-| `tamanho`       | Tamanho disponível do produto                    | Deve corresponder aos tamanhos comercializados pela empresa |
-| `cor`           | Cor do produto                                   | Deve ser informada no cadastro                              |
-| `preco_venda`   | Preço do produto para venda no varejo            | Deve ser maior que zero                                     |
-| `preco_atacado` | Preço utilizado nas vendas por atacado           | Deve ser maior que zero e seguir a política comercial       |
-| `id_fornecedor` | Identifica o fornecedor responsável pelo produto | Deve corresponder a um fornecedor cadastrado                |
-| `status`        | Situação do produto                              | Deve indicar se o produto está ativo ou inativo             |
+| Atributo        |Tipo físico| Obrigatório? | Descrição                                        | Regra de negócio associada                                  |
+| --------------- | -|-|---------------------------------------------- | ----------------------------------------------------------- |
+| `id_produto`    | ||Identificador único do produto                   | Deve ser único e obrigatório                                |
+| `nome`          | ||Nome do produto                                  | Obrigatório                                                 |
+| `descricao`     | ||Descrição das características do produto         | Deve permitir identificar o produto                         |
+| `categoria`     | ||Categoria à qual o produto pertence              | Obrigatória                                                 |
+| `tamanho`       | ||Tamanho disponível do produto                    | Deve corresponder aos tamanhos comercializados pela empresa |
+| `cor`           | ||Cor do produto                                   | Deve ser informada no cadastro                              |
+| `preco_venda`   | ||Preço do produto para venda no varejo            | Deve ser maior que zero                                     |
+| `preco_atacado` | ||Preço utilizado nas vendas por atacado           | Deve ser maior que zero e seguir a política comercial       |
+| `id_fornecedor` | ||Identifica o fornecedor responsável pelo produto | Deve corresponder a um fornecedor cadastrado                |
+| `status`        | ||Situação do produto                              | Deve indicar se o produto está ativo ou inativo             |
 
 **Regras relacionadas:** um produto não pode ser vendido quando não houver quantidade disponível em estoque. Produtos inativos não devem ser utilizados em novas vendas.
 
 ### 5.8 Pagamento
 
-| Atributo            | Descrição                                    | Regra de negócio associada                                                       |
-| ------------------- | -------------------------------------------- | -------------------------------------------------------------------------------- |
-| `id_pagamento`      | Identificador único do pagamento             | Deve ser único e obrigatório                                                     |
-| `id_pedido`         | Identifica o pedido relacionado ao pagamento | Deve corresponder a um pedido existente                                          |
-| `data_pagamento`    | Data em que o pagamento foi realizado        | Obrigatória quando o pagamento for confirmado                                    |
-| `forma_pagamento`   | Forma utilizada para realizar o pagamento    | Deve permitir identificar formas como Pix, cartão ou outras aceitas pela empresa |
-| `valor`             | Valor pago pelo cliente                      | Deve corresponder ao valor devido após os descontos aplicáveis                   |
-| `status`            | Situação do pagamento                        | Deve indicar, por exemplo, pendente, confirmado ou cancelado                     |
-| `desconto_aplicado` | Valor do desconto aplicado ao pagamento      | Para pagamentos via Pix, deve aplicar o desconto de 5%                           |
+| Atributo            |Tipo físico| Obrigatório? | Descrição                                    | Regra de negócio associada                                                       |
+| ------------------- | -|-|------------------------------------------ | -------------------------------------------------------------------------------- |
+| `id_pagamento`      | ||Identificador único do pagamento             | Deve ser único e obrigatório                                                     |
+| `id_pedido`         | ||Identifica o pedido relacionado ao pagamento | Deve corresponder a um pedido existente                                          |
+| `data_pagamento`    | ||Data em que o pagamento foi realizado        | Obrigatória quando o pagamento for confirmado                                    |
+| `forma_pagamento`   | ||Forma utilizada para realizar o pagamento    | Deve permitir identificar formas como Pix, cartão ou outras aceitas pela empresa |
+| `valor`             | ||Valor pago pelo cliente                      | Deve corresponder ao valor devido após os descontos aplicáveis                   |
+| `status`            | ||Situação do pagamento                        | Deve indicar, por exemplo, pendente, confirmado ou cancelado                     |
+| `desconto_aplicado` | ||Valor do desconto aplicado ao pagamento      | Para pagamentos via Pix, deve aplicar o desconto de 5%                           |
 
 **Regras relacionadas:** a compra somente é efetuada após a confirmação do pagamento. O desconto de 5% é aplicado somente para pagamentos realizados via Pix.
 
@@ -258,86 +258,87 @@ Os exemplos de valores eventualmente utilizados para representar os atributos de
 
 A modelagem conceitual tem como objetivo representar as principais informações do sistema, suas características e os relacionamentos existentes entre elas. O modelo é composto pelas entidades Funcionário, Cliente, Empresa, Estoque, Pedido, Fornecedor e Pagamento.
 
-6.1 Entidades reconhecidas
-Funcionário
+## 6.1 Entidades reconhecidas
+
+#### Funcionário
 
 Representa os colaboradores responsáveis pelas atividades internas da empresa, podendo estar envolvidos no atendimento aos clientes e no registro de pedidos.
 
-Atributos:
+##### Atributos:
 
-id_funcionario — identificador único do funcionário.
+- id_funcionario — identificador único do funcionário.
 
-nome — nome completo do funcionário.
+- nome_funcionario — nome completo do funcionário.
 
-cpf — CPF do funcionário.
+- cpf_funcionario — CPF do funcionário.
 
-cargo — cargo ou função exercida.
+- cargo_funcionario — cargo ou função exercida.
 
-telefone — telefone para contato.
+- telefone_funcionario — telefone para contato.
 
-email — endereço de e-mail.
+- email_funcionario — endereço de e-mail.
 
-data_admissão — data em que o funcionário foi admitido.
+- data_admissão — data em que o funcionário foi admitido.
 
-status — situação atual do funcionário, como ativo ou inativo.
+- status_funcionario — situação atual do funcionário, como ativo ou inativo.
 
-Cliente
+### Cliente
 
 Representa as pessoas físicas ou jurídicas que realizam compras ou mantêm relacionamento comercial com a empresa.
 
-Atributos:
+#### Atributos:
 
-id_cliente — identificador único do cliente.
+- id_cliente — identificador único do cliente.
 
-nome — nome do cliente ou responsável.
+- nome_cliente — nome do cliente ou responsável.
 
-cpf_cnpj — documento de identificação do cliente.
+- cpf_cnpj — documento de identificação do cliente.
 
-telefone — telefone para contato.
+- telefone_cliente — telefone para contato.
 
-email — endereço de e-mail.
+- email_cliente — endereço de e-mail.
 
-endereço — endereço do cliente.
+- endereço_Cliente — endereço do cliente.
 
-tipo_cliente — identifica se o cliente é pessoa física ou jurídica.
+- tipo_cliente — identifica se o cliente é pessoa física ou jurídica.
 
-status — situação do cadastro do cliente.
+- status_cliente — situação do cadastro do cliente.
 
-Empresa
+## Empresa
 
 Representa a organização responsável pela operação do sistema e pelo gerenciamento das atividades comerciais.
 
-Atributos:
+#### Atributos:
 
-id_empresa — identificador único da empresa.
+- id_empresa — identificador único da empresa.
 
-razao_social — razão social da empresa.
+- razao_social — razão social da empresa.
 
-cnpj — CNPJ da empresa.
+- cnpj_empresa — CNPJ da empresa.
 
-nome_fantasia — nome comercial utilizado pela empresa.
+- nome_fantasia — nome comercial utilizado pela empresa.
 
-endereco — endereço da empresa.
+- endereco_empresa — endereço da empresa.
 
-telefone — telefone de contato.
+- telefone_empresa — telefone de contato.
 
-email — endereço de e-mail da empresa.
+- email_empresa — endereço de e-mail da empresa.
 
-Estoque
+## Estoque
 
 Representa o controle da quantidade disponível dos produtos, permitindo acompanhar os níveis de estoque e sua atualização.
 
-Atributos:
+#### Atributos:
 
-id_estoque — identificador único do registro de estoque.
+- id_estoque — identificador único do registro de estoque.
 
-id_produto — identificador do produto relacionado ao estoque.
+- id_produto — identificador do produto relacionado ao estoque.
 
-quantidade_disponivel — quantidade disponível do produto.
+- quantidade_disponivel — quantidade disponível do produto.
 
-quantidade_minima — quantidade mínima desejada para o produto.
+- quantidade_minima — quantidade mínima desejada para o produto.
 
-data_atualizacao — data da última atualização das informações do estoque.
+- data_atualizacao — data da última atualização das informações do estoque.
 
 Observação: o atributo id_produto pressupõe a existência de uma entidade Produto, que não foi listada entre as entidades fornecidas. Caso Produto faça parte do escopo do sistema, ela deverá ser adicionada ao modelo conceitual.
 
@@ -355,7 +356,7 @@ id_funcionario — identifica o funcionário responsável pelo registro ou atend
 
 data_pedido — data em que o pedido foi realizado.
 
-status — situação atual do pedido.
+status_pedido — situação atual do pedido.
 
 tipo_venda — modalidade ou tipo da venda realizada.
 
@@ -371,17 +372,17 @@ Atributos:
 
 id_fornecedor — identificador único do fornecedor.
 
-nome — nome ou razão social do fornecedor.
+nome_fornecedor — nome ou razão social do fornecedor.
 
-cnpj — CNPJ do fornecedor.
+cnpj_fornecedor — CNPJ do fornecedor.
 
-telefone — telefone para contato.
+telefone_fornecedor — telefone para contato.
 
-email — endereço de e-mail.
+email_fornecedor — endereço de e-mail.
 
-endereço — endereço do fornecedor.
+endereço_fornecedor — endereço do fornecedor.
 
-status — situação atual do fornecedor.
+status_fornecedor — situação atual do fornecedor.
 
 Pagamento
 
@@ -397,9 +398,9 @@ data_pagamento — data em que o pagamento foi realizado.
 
 forma_pagamento — meio utilizado para realizar o pagamento.
 
-valor — valor pago.
+valor_pagamento — valor pago.
 
-status — situação do pagamento.
+status_pagamento — situação do pagamento.
 
 desconto_aplicado — valor ou percentual de desconto aplicado ao pagamento.
 
