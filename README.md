@@ -313,14 +313,12 @@ Os exemplos de valores eventualmente utilizados para representar os atributos de
 ---
 
 ## 7. Diagrama Entidade-Relacionamento (DER)
-<img width="1755" height="771" alt="Diagrama_Entidade_relacionamento_page-0001" src="https://github.com/user-attachments/assets/5b4f6cdb-9d7f-48c2-851c-a84de0d9fd4a" />
-
+<img width="1754" height="832" alt="Conceptual model - BRMW_page-0001 (1)" src="https://github.com/user-attachments/assets/0a4b7bff-0b6b-47b4-b611-0492d4cce0f6" />
 
 
 ---
 
 ## 8. Justificativa Técnica
-*(vale 7,5% — sozinho, é o subcritério de maior peso dentro da Dimensão Conceitual)*
 
 A estrutura do modelo foi definida com base nos principais processos que identificamos na Peg Vest Jeans, focando em representar no banco de dados apenas os dados que realmente fazem parte da rotina da empresa. Por isso, modelamos entidades para clientes, funcionários, produtos, estoque e para as operações de venda e pedido, afinal, são esses pontos que sustentam o cadastro, a venda, o controle de estoque, o envio de pedidos, as entregas e as transferências.
 
@@ -333,7 +331,6 @@ No fim, a ideia dessa modelagem foi evitar uma complexidade desnecessária, mant
 ---
 
 ## 9. Uso de Inteligência Artificial
-*(documentação obrigatória — não é opcional se o grupo usou IA em qualquer etapa: pesquisa, escrita, organização de ideias ou revisão de texto)*
 
 Se o grupo usou alguma ferramenta de IA (ChatGPT, Claude, Gemini, Perplexity etc.) em qualquer parte do trabalho, registre **para cada uso relevante**:
 
@@ -348,7 +345,7 @@ Se o grupo usou alguma ferramenta de IA (ChatGPT, Claude, Gemini, Perplexity etc
 | **Justificativa da escolha final** | Nós utilizamos a sugestão da IA como ponto de partida, mas validou cada entidade, atributo e relacionamento com base no conhecimento prático sobre a rotina da Peg Vest Jeans, ajustando o que fosse necessário para refletir com mais precisão os processos reais da empresa antes de incluir no modelo final. |
 | **Reflexão crítica** | Utilizamos a IA para nos ajudar a organizar rapidamente um primeiro esboço da modelagem conceitual e a pensar em pontos como escalabilidade e integração futura, mas o grupo percebeu a necessidade de revisar as sugestões à luz da realidade específica da organização, já que a IA não teve acesso direto ao contexto real da loja. |
 
-*Se o grupo não usou nenhuma ferramenta de IA, declare isso explicitamente nesta seção.*
+
 
 ---
 
