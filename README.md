@@ -182,18 +182,6 @@ Modelagem de um sistema de gestão de informações para uma organização de pe
 | VL_TOTAL | decimal(10,2) | Sim | Valor total do pedido; base de conferência com os registros de Pagamento. |
 | DT_ENVIO | date | Não | Data de expedição da mercadoria; utilizada para cálculo de prazo de entrega. |
 
-## Item Solicitado
-
-| Atributo | Tipo físico | Obrigatório | Significado e relevância |
-|---|---|---|---|
-| ID_ITEM | integer | Sim (PK) | Código de identificação do registro; não sofre operação matemática. |
-| ID_PEDIDO | integer | Sim (FK) | Referência ao pedido ao qual o item pertence. |
-| ID_PRODUTO | integer | Sim (FK) | Referência ao produto comprado dentro do pedido. |
-| QT_ITEM | integer | Sim | Quantidade do produto adquirida naquele item do pedido. |
-| VL_UNITARIO | decimal(10,2) | Sim | Preço unitário do produto no momento da venda; preserva o valor histórico mesmo se o preço do produto mudar depois. |
-| VL_SUBTOTAL | decimal(10,2) | Sim | Resultado de `QT_ITEM x VL_UNITARIO`; usado para compor o `VL_TOTAL` do Pedido. |
-
-
 ### Fornecedor
 
 | Atributo | Tipo físico | Obrigatório | Significado e relevância |
@@ -260,7 +248,7 @@ Os exemplos de valores eventualmente utilizados para representar os atributos de
 | **Fornecedor** | Representa as entidades externas responsáveis pelo fornecimento de produtos, necessário para reposição de estoque. |
 | **Pagamento** | Registra as transações financeiras associadas a um pedido, permitindo controle de recebimentos. |
 | **Produto** | Representa os itens comercializáveis pela empresa, base para pedidos, estoque e fornecimento. | 
-| **Item Solicitado** | Entidade associativa que detalha quais produtos, em qual quantidade e a qual valor unitário compõem cada pedido. Necessária para resolver o relacionamento N:M entre Pedido e Produto, e para permitir o cálculo correto do valor total de cada venda. |
+
 ### 6.2 Relacionamentos Pertinentes
 
 | Relacionamento | Cardinalidade | Descrição |
@@ -273,8 +261,6 @@ Os exemplos de valores eventualmente utilizados para representar os atributos de
 | **Funcionário — Pedido** | 1:N | Um funcionário pode registrar/atender vários pedidos; cada pedido é atendido por apenas um funcionário. |
 | **Cliente — Pedido** | 1:N | Um cliente pode realizar vários pedidos; cada pedido pertence a um único cliente. |
 | **Pedido — Pagamento** | 1:N | Um pedido pode ter um ou mais pagamentos (ex: parcelamento); cada pagamento está vinculado a um único pedido. |
-| **Pedido - Item Solicitado**| 1:1 | Cada Item solicitado pertence a exatamente 1 Pedido.|
-| **Produto - Item Solicitado** | 1:1 | Cada Item Solicitado faz referência a exatamente 1 Produto.|
 | **Produto — Estoque** | 1:1 | Cada produto possui um registro de controle de estoque associado. |
 | **Fornecedor — Produto** | 1:N | Um fornecedor pode fornecer um ou vários produtos, e um produto pode ser fornecido por um ou vários fornecedor  |
 
@@ -313,7 +299,7 @@ Os exemplos de valores eventualmente utilizados para representar os atributos de
 ---
 
 ## 7. Diagrama Entidade-Relacionamento (DER)
-<img width="1754" height="832" alt="Conceptual model - BRMW_page-0001 (1)" src="https://github.com/user-attachments/assets/0a4b7bff-0b6b-47b4-b611-0492d4cce0f6" />
+<img width="1754" height="763" alt="Conceptual model - BRMW_page-0001 (2)" src="https://github.com/user-attachments/assets/664d9e24-0852-44e2-9e90-ecf1a64ff6d8" />
 
 
 ---
@@ -344,27 +330,3 @@ Se o grupo usou alguma ferramenta de IA (ChatGPT, Claude, Gemini, Perplexity etc
 | **Trechos rejeitados ou corrigidos** | Algumas sugestões apresentadas pela IA não foram utilizadas ou precisaram ser adaptadas, principalmente quando não correspondiam ao que havia sido identificado pelo grupo durante o desenvolvimento do trabalho. |
 | **Justificativa da escolha final** | Nós utilizamos a sugestão da IA como ponto de partida, mas validou cada entidade, atributo e relacionamento com base no conhecimento prático sobre a rotina da Peg Vest Jeans, ajustando o que fosse necessário para refletir com mais precisão os processos reais da empresa antes de incluir no modelo final. |
 | **Reflexão crítica** | Utilizamos a IA para nos ajudar a organizar rapidamente um primeiro esboço da modelagem conceitual e a pensar em pontos como escalabilidade e integração futura, mas o grupo percebeu a necessidade de revisar as sugestões à luz da realidade específica da organização, já que a IA não teve acesso direto ao contexto real da loja. |
-
-
-
----
-
-## Critérios Atitudinais (20%)
-**Estes critérios NÃO constam explicitamente como item de entrega no README.** Eles são avaliados por meio de **Avaliação 360º entre os integrantes do grupo** (cada membro avalia os colegas de equipe) e, no caso da Colaboração, também pela **colaboração equilibrada no histórico de commits** do repositório GitHub — não pela leitura do restante do repositório nem pela apresentação:
-
-- **Participação (5%):** envolvimento nas discussões técnicas e nas decisões do grupo.
-- **Comprometimento (5%):** cumprimento de prazos e responsabilidades assumidas.
-- **Colaboração (5%):** respeito às contribuições dos colegas, cooperação na construção do projeto e colaboração equilibrada no histórico de commits do repositório GitHub.
-- **Autonomia (5%):** busca independente de soluções e proposta de melhorias.
-
----
-
-## Resumo dos Pesos
-
-| Dimensão | Peso total |
-|----------|-----------|
-| Conceitual (contexto, requisitos/regras, modelagem, justificativa técnica) | 30% |
-| Procedimental (requisitos, fluxogramas, dicionário de dados, DER) | 50% |
-| Atitudinal (participação, comprometimento, colaboração, autonomia) | 20% |
-
-**Entrega final:** README.md completo + DER + Dicionário de Dados em HTML (com exceção dos cursos GTI) anexado no repositório GitHub do grupo.
