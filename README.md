@@ -134,26 +134,7 @@ Modelagem de um sistema de gestão de informações para uma organização de pe
 
 ---
 
-# 5. Dicionário de Dados Conceitual (Preliminar)
-
-### Funcionário
-
-| Atributo | Tipo físico | Obrigatório | Significado e relevância |
-|---|---|---|---|
-| ID_FUNCIONARIO | integer | Sim (PK) | Código de identificação do registro; não sofre operação matemática. |
-| NM_FUNCIONARIO | varchar(120) | Sim | Nome completo do colaborador; identifica o responsável pelo atendimento no pedido. |
-| CPF | varchar(14) | Sim | Documento civil único; usado para validação de identidade e vínculo trabalhista. |
-| DS_CARGO | varchar(60) | Sim | Função exercida pelo colaborador; define permissões e responsabilidades no fluxo de vendas. |
-| NR_TELEFONE | varchar(20) | Não | Contato para comunicação interna e emergências. |
-| DS_EMAIL | varchar(120) | Não | Canal de comunicação institucional e login no sistema. |
-| DT_ADMISSAO | date | Sim | Data de início do vínculo empregatício; usada para cálculo de tempo de casa e histórico funcional. |
-| IN_ATIVO | boolean | Sim | Indicador de vínculo ativo; funcionário inativo perde acesso ao sistema sem apagar seu histórico de pedidos atendidos. |
-
-### Cliente
-
-| Atributo | Tipo físico | Obrigatório | Significado e relevância |
-|---|---|---|---|
-| ID_CLIENTE | integer | Sim (PK) | Código de identificação do registro; não sofre operação matemática. |
+atemática. |
 | NM_CLIENTE | varchar(150) | Sim | Nome ou razão social do cliente; identifica-o nos pedidos e documentos fiscais. |
 | NR_CPF_CNPJ | varchar(18) | Sim | Documento civil ou empresarial único; utilizado para emissão de nota fiscal e controle de duplicidade de cadastro. |
 | NR_TELEFONE | varchar(20) | Não | Contato para confirmação de pedidos e entregas. |
@@ -196,6 +177,18 @@ Modelagem de um sistema de gestão de informações para uma organização de pe
 | TP_VENDA | varchar(30) | Sim | Modalidade da venda (ex: presencial, online); usada para segmentação de relatórios comerciais. |
 | VL_TOTAL | decimal(10,2) | Sim | Valor total do pedido; base de conferência com os registros de Pagamento. |
 | DT_ENVIO | date | Não | Data de expedição da mercadoria; utilizada para cálculo de prazo de entrega. |
+
+## Item Solicitado
+
+| Atributo | Tipo físico | Obrigatório | Significado e relevância |
+|---|---|---|---|
+| ID_ITEM | integer | Sim (PK) | Código de identificação do registro; não sofre operação matemática. |
+| ID_PEDIDO | integer | Sim (FK) | Referência ao pedido ao qual o item pertence. |
+| ID_PRODUTO | integer | Sim (FK) | Referência ao produto comprado dentro do pedido. |
+| QT_ITEM | integer | Sim | Quantidade do produto adquirida naquele item do pedido. |
+| VL_UNITARIO | decimal(10,2) | Sim | Preço unitário do produto no momento da venda; preserva o valor histórico mesmo se o preço do produto mudar depois. |
+| VL_SUBTOTAL | decimal(10,2) | Sim | Resultado de `QT_ITEM x VL_UNITARIO`; usado para compor o `VL_TOTAL` do Pedido. |
+
 
 ### Fornecedor
 
@@ -262,21 +255,27 @@ Os exemplos de valores eventualmente utilizados para representar os atributos de
 | **Pedido** | Registra as transações de venda realizadas entre cliente e empresa, intermediadas por um funcionário. |
 | **Fornecedor** | Representa as entidades externas responsáveis pelo fornecimento de produtos, necessário para reposição de estoque. |
 | **Pagamento** | Registra as transações financeiras associadas a um pedido, permitindo controle de recebimentos. |
-| **Produto** | Representa os itens comercializáveis pela empresa, base para pedidos, estoque e fornecimento. |
+| **Produto** | Representa os itens comercializáveis pela empresa, base para pedidos, estoque e fornecimento. | 
 
 ## 6.1 Relacionamentos Pertinentes
 
 | Relacionamento | Cardinalidade | Descrição |
 |---|---|---|
+| **Empresa — Funcionário** | 1:N | Uma empresa possui vários funcionários vinculados a ela; cada funcionário pertence a uma única empresa. |
+| **Empresa — Cliente** | 1:N | Uma empresa atende vários clientes; cada cliente é atendido por uma empresa. |
+| **Empresa — Pedido** | 1:N | A empresa registra inúmeros pedidos no sistema. |
+| **Empresa — Estoque** | 1:1 | A empresa controla/possui um estoque; cada registro de estoque pertence a uma única empresa. |
+| **Empresa — Fornecedor** | 0:N | Uma empresa pode se relacionar com vários fornecedores. |
 | **Funcionário — Pedido** | 1:N | Um funcionário pode registrar/atender vários pedidos; cada pedido é atendido por apenas um funcionário. |
 | **Cliente — Pedido** | 1:N | Um cliente pode realizar vários pedidos; cada pedido pertence a um único cliente. |
-| **Pedido — Pagamento** | 1:N (ou 1:1, conforme regra de negócio) | Um pedido pode ter um ou mais pagamentos (ex: parcelamento); cada pagamento está vinculado a um único pedido. |
+| **Pedido — Pagamento** | 1:N | Um pedido pode ter um ou mais pagamentos (ex: parcelamento); cada pagamento está vinculado a um único pedido. |
+| **Pedido - Item Solicitado**| 1:1 | Cada Item solicitado pertence a exatamente 1 Pedido.|
+| **Produto - Item Solicitado** | 1:1 | Cada Item Solicitado faz referência a exatamente 1 Produto.|
 | **Produto — Estoque** | 1:1 | Cada produto possui um registro de controle de estoque associado. |
-| **Fornecedor — Produto** | N:M | Um fornecedor pode fornecer vários produtos, e um produto pode ser fornecido por mais de um fornecedor (requer entidade associativa, ex: "Fornecimento"). |
-| **Empresa — Pedido** | 1:N | A empresa (entidade institucional) é a parte vendedora em todos os pedidos registrados no sistema. |
----
+| **Fornecedor — Produto** | 1:N | Um fornecedor pode fornecer um ou vários produtos, e um produto pode ser fornecido por um ou vários fornecedor  |
 
-## 6.2 Restrições e Políticas Organizacionais
+
+## 6.4 Restrições e Políticas Organizacionais
 
 - **Integridade referencial:** todo `id_cliente`, `id_funcionario`, `id_produto` e `id_pedido` referenciado em outra entidade deve existir previamente na entidade de origem (não é permitido pedido órfão sem cliente ou funcionário válido).
 - **Unicidade:** os campos `cpf` (Funcionário), `cpf_cnpj` (Cliente), `cnpj` (Empresa e Fornecedor) devem ser únicos no sistema, evitando duplicidade de cadastro.
@@ -286,6 +285,26 @@ Os exemplos de valores eventualmente utilizados para representar os atributos de
 - **Rastreabilidade:** todo pedido deve manter o vínculo com o funcionário responsável pelo atendimento, para fins de auditoria e avaliação de desempenho.
 - **Confidencialidade de dados:** informações pessoais (CPF, telefone, email) devem seguir políticas de proteção de dados (ex: LGPD), com acesso restrito conforme perfil do usuário do sistema.
 
+### Permissões de acesso
+- Cada usuário/funcionário deve ter acesso apenas aos módulos correspondentes à sua função (vendas, estoque, financeiro ou administração).
+- O acesso às funcionalidades do sistema é controlado conforme o nível de permissão associado ao cargo/perfil do funcionário.
+- Funcionários do setor de vendas não possuem acesso a configurações administrativas nem a informações restritas do setor financeiro.
+
+### Administração do sistema
+- Somente o administrador possui permissão para alterar configurações do sistema.
+- Usuários comuns não podem modificar configurações administrativas sem autorização prévia.
+- Alterações em configurações do sistema, permissões de usuários e regras internas devem ser realizadas exclusivamente por funcionários autorizados.
+
+### Backup
+- Os dados do sistema devem possuir backup diário, conforme política interna da empresa.
+- Os backups devem preservar informações de Clientes, Produtos, Estoque, Pedidos, Vendas e Pagamentos.
+- O backup tem como finalidade permitir a recuperação de dados em caso de falhas, perda de informações ou problemas no sistema.
+
+### Dados dos clientes
+- Somente funcionários autorizados podem acessar os dados cadastrais dos clientes.
+- O acesso às informações dos clientes deve respeitar as permissões definidas pela empresa, restritas conforme a necessidade da função exercida.
+- Funcionários que não necessitam dessas informações para desempenhar suas atividades não devem ter acesso aos dados cadastrais dos clientes.
+- As informações dos clientes devem ser utilizadas exclusivamente para atividades relacionadas ao funcionamento da loja, não podendo ser compartilhadas com terceiros ou usadas para finalidades diversas.
 ---
 
 ## 7. Diagrama Entidade-Relacionamento (DER)
