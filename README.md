@@ -260,7 +260,7 @@ Os exemplos de valores eventualmente utilizados para representar os atributos de
 | **Fornecedor** | Representa as entidades externas responsáveis pelo fornecimento de produtos, necessário para reposição de estoque. |
 | **Pagamento** | Registra as transações financeiras associadas a um pedido, permitindo controle de recebimentos. |
 | **Produto** | Representa os itens comercializáveis pela empresa, base para pedidos, estoque e fornecimento. | 
-
+| **Item Solicitado** | Entidade associativa que detalha quais produtos, em qual quantidade e a qual valor unitário compõem cada pedido. Necessária para resolver o relacionamento N:M entre Pedido e Produto, e para permitir o cálculo correto do valor total de cada venda. |
 ## 6.1 Relacionamentos Pertinentes
 
 | Relacionamento | Cardinalidade | Descrição |
@@ -277,7 +277,7 @@ Os exemplos de valores eventualmente utilizados para representar os atributos de
 | **Produto - Item Solicitado** | 1:1 | Cada Item Solicitado faz referência a exatamente 1 Produto.|
 | **Produto — Estoque** | 1:1 | Cada produto possui um registro de controle de estoque associado. |
 | **Fornecedor — Produto** | 1:N | Um fornecedor pode fornecer um ou vários produtos, e um produto pode ser fornecido por um ou vários fornecedor  |
-| **Item Solicitado** | Entidade associativa que detalha quais produtos, em qual quantidade e a qual valor unitário compõem cada pedido. Necessária para resolver o relacionamento N:M entre Pedido e Produto, e para permitir o cálculo correto do valor total de cada venda. |
+
 
 
 ## 6.4 Restrições e Políticas Organizacionais
@@ -313,15 +313,9 @@ Os exemplos de valores eventualmente utilizados para representar os atributos de
 ---
 
 ## 7. Diagrama Entidade-Relacionamento (DER)
-*(vale 20% — é o item de maior peso da entrega)*
+<img width="1755" height="771" alt="Diagrama_Entidade_relacionamento_page-0001" src="https://github.com/user-attachments/assets/5b4f6cdb-9d7f-48c2-851c-a84de0d9fd4a" />
 
-- Anexe o DER (em imagem).
-- O diagrama deve representar corretamente:
-  - Entidades
-  - Atributos
-  - Relacionamentos
-  - **Cardinalidades**
-- O modelo deve ser **consistente** e já demonstrar potencial de **escalabilidade e integração** (pensando nas próximas etapas do projeto).
+
 
 ---
 
