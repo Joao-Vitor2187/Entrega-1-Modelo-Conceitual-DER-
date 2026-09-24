@@ -312,14 +312,14 @@ Se o grupo usou alguma ferramenta de IA (ChatGPT, Claude, Gemini, Perplexity etc
 
 | Item | O que registrar |
 |------|------------------|
-| **Ferramenta e etapa** | Qual IA foi usada e em qual parte do trabalho (ex.: pesquisa sobre o setor da organização, redação do README, organização dos requisitos, revisão ortográfica/gramatical). |
-| **Motivação** | Por que o grupo recorreu à IA nesse ponto específico. |
+| **Ferramenta e etapa** | ChatGPT e Claude - utilizado como ferramenta de apoio durante algumas etapas do trabalho, principalmente para pesquisas, esclarecimento de dúvidas e organização das ideias. |
+| **Motivação** | Utilizamos a IA para entender melhor o que a atividade solicitava e ter um direcionamento inicial sobre como desenvolver o trabalho. Ela também foi utilizada para esclarecer conceitos que ainda não estavam totalmente claros para o grupo. |
 | **Prompt(s) utilizados** | Texto exato (ou muito próximo) do que foi perguntado/pedido à IA. |
 | **Resposta recebida** | Resumo ou trecho relevante da resposta da IA. |
-| **Fontes consultadas e verificadas** | Se a IA citou fontes/dados, quais foram checadas pelo grupo e como (ex.: comparação com o que foi observado na visita de campo). |
-| **Trechos rejeitados ou corrigidos** | O que da resposta da IA foi descartado, editado ou corrigido manualmente, e por quê. |
-| **Justificativa da escolha final** | Por que o grupo manteve, adaptou ou rejeitou o que a IA sugeriu. |
-| **Reflexão crítica** | Limites, vieses ou erros identificados no uso da IA nessa etapa (ex.: informação desatualizada, alucinação, generalização incorreta sobre o tipo de organização). |
+| **Fontes consultadas e verificadas** | As respostas da IA foram utilizadas como orientação inicial. As informações consideradas no trabalho foram analisadas pelo grupo e relacionadas aos dados e informações que já havíamos levantado sobre a organização. |
+| **Trechos rejeitados ou corrigidos** | Algumas sugestões apresentadas pela IA não foram utilizadas ou precisaram ser adaptadas, principalmente quando não correspondiam ao que havia sido identificado pelo grupo durante o desenvolvimento do trabalho. |
+| **Justificativa da escolha final** | A IA foi utilizada somente como uma ferramenta de auxílio. O grupo analisou as sugestões recebidas e decidiu quais informações faziam sentido para o projeto, realizando as alterações necessárias antes de incluí-las no trabalho. |
+| **Reflexão crítica** | O uso da IA ajudou o grupo a compreender melhor a atividade, esclarecer dúvidas e encontrar um ponto de partida. Porém, percebemos que suas respostas podem ser genéricas ou não representar exatamente a realidade da organização. Por isso, foi necessário analisar as informações antes de utilizá-las e tomar as decisões finais com base no que foi definido pelo próprio grupo. |
 
 *Se o grupo não usou nenhuma ferramenta de IA, declare isso explicitamente nesta seção.*
 
