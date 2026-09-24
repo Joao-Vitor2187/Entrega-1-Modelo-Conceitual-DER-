@@ -261,7 +261,7 @@ Os exemplos de valores eventualmente utilizados para representar os atributos de
 | **Pagamento** | Registra as transações financeiras associadas a um pedido, permitindo controle de recebimentos. |
 | **Produto** | Representa os itens comercializáveis pela empresa, base para pedidos, estoque e fornecimento. | 
 | **Item Solicitado** | Entidade associativa que detalha quais produtos, em qual quantidade e a qual valor unitário compõem cada pedido. Necessária para resolver o relacionamento N:M entre Pedido e Produto, e para permitir o cálculo correto do valor total de cada venda. |
-## 6.1 Relacionamentos Pertinentes
+### 6.2 Relacionamentos Pertinentes
 
 | Relacionamento | Cardinalidade | Descrição |
 |---|---|---|
@@ -280,7 +280,7 @@ Os exemplos de valores eventualmente utilizados para representar os atributos de
 
 
 
-## 6.4 Restrições e Políticas Organizacionais
+## 6.3 Restrições e Políticas Organizacionais
 
 - **Integridade referencial:** todo `id_cliente`, `id_funcionario`, `id_produto` e `id_pedido` referenciado em outra entidade deve existir previamente na entidade de origem (não é permitido pedido órfão sem cliente ou funcionário válido).
 - **Unicidade:** os campos `cpf` (Funcionário), `cpf_cnpj` (Cliente), `cnpj` (Empresa e Fornecedor) devem ser únicos no sistema, evitando duplicidade de cadastro.
