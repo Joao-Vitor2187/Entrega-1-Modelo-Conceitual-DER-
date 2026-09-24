@@ -134,7 +134,11 @@ Modelagem de um sistema de gestão de informações para uma organização de pe
 
 ---
 
-atemática. |
+### Cliente
+
+| Atributo | Tipo físico | Obrigatório | Significado e relevância |
+|---|---|---|---|
+| ID_CLIENTE | integer | Sim (PK) | Código de identificação do registro; não sofre operação matemática. |
 | NM_CLIENTE | varchar(150) | Sim | Nome ou razão social do cliente; identifica-o nos pedidos e documentos fiscais. |
 | NR_CPF_CNPJ | varchar(18) | Sim | Documento civil ou empresarial único; utilizado para emissão de nota fiscal e controle de duplicidade de cadastro. |
 | NR_TELEFONE | varchar(20) | Não | Contato para confirmação de pedidos e entregas. |
@@ -273,6 +277,7 @@ Os exemplos de valores eventualmente utilizados para representar os atributos de
 | **Produto - Item Solicitado** | 1:1 | Cada Item Solicitado faz referência a exatamente 1 Produto.|
 | **Produto — Estoque** | 1:1 | Cada produto possui um registro de controle de estoque associado. |
 | **Fornecedor — Produto** | 1:N | Um fornecedor pode fornecer um ou vários produtos, e um produto pode ser fornecido por um ou vários fornecedor  |
+| **Item Solicitado** | Entidade associativa que detalha quais produtos, em qual quantidade e a qual valor unitário compõem cada pedido. Necessária para resolver o relacionamento N:M entre Pedido e Produto, e para permitir o cálculo correto do valor total de cada venda. |
 
 
 ## 6.4 Restrições e Políticas Organizacionais
