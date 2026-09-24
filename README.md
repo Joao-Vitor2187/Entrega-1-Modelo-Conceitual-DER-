@@ -50,6 +50,15 @@ Modelagem de um sistema de gestão de informações para uma organização de pe
 - **Enviar notificações → O sistema deve enviar uma notificação quando determinado produto estiver com estoque baixo**
 ---
 ### 3.2 Requisitos Não Funcionais
+- **Desempenho → O sistema deve apresentar tempo de resposta adequado durante a verificação e consulta de produtos.**
+- **Segurança → Cada usuário deve ter acesso restrito à sua área de atuação; apenas o gerente possui acesso a senhas e preços, sendo que qualquer desconto ou alteração de valor só pode ocorrer mediante confirmação da gerência.**
+- **Disponibilidade → Os pontos de venda físicos só podem ser acessados localmente, dentro da empresa e em horário de funcionamento; já os relatórios de vendas podem ser acessados remotamente via web.**
+- **Usabilidade → O sistema deve permitir consulta automática ao cadastro de clientes, preenchendo automaticamente os demais dados a partir do CNPJ informado.**
+- **Backup → O sistema deve sincronizar o banco de dados local com a nuvem, permanecendo disponível localmente mesmo em caso de falha de conexão com a internet; após o retorno da conexão, os dados devem ser sincronizados automaticamente.**
+- **Compatibilidade → O sistema deve ser compatível com os principais navegadores e dispositivos.** 
+- **Escalabilidade → O sistema deve suportar até 1.000 usuários simultâneos.**
+- **Manutenibilidade → O sistema deve possuir partes customizáveis e permitir controle total das permissões de configuração de acesso, organizadas por módulos.** 
+- **Confiabilidade → O sistema deve realizar backup automático e local dos dados diariamente.**
 
 ---
 ## 4. Regras de Negócio
@@ -312,14 +321,14 @@ Se o grupo usou alguma ferramenta de IA (ChatGPT, Claude, Gemini, Perplexity etc
 
 | Item | O que registrar |
 |------|------------------|
-| **Ferramenta e etapa** | ChatGPT e Claude - utilizado como ferramenta de apoio durante algumas etapas do trabalho, principalmente para pesquisas, esclarecimento de dúvidas e organização das ideias. |
-| **Motivação** | Utilizamos a IA para entender melhor o que a atividade solicitava e ter um direcionamento inicial sobre como desenvolver o trabalho. Ela também foi utilizada para esclarecer conceitos que ainda não estavam totalmente claros para o grupo. |
-| **Prompt(s) utilizados** | Texto exato (ou muito próximo) do que foi perguntado/pedido à IA. |
-| **Resposta recebida** | Resumo ou trecho relevante da resposta da IA. |
-| **Fontes consultadas e verificadas** | As respostas da IA foram utilizadas como orientação inicial. As informações consideradas no trabalho foram analisadas pelo grupo e relacionadas aos dados e informações que já havíamos levantado sobre a organização. |
+| **Ferramenta e etapa** | ChatGPT e Claude - utilizado na etapa de Modelagem Conceitual (Entidades, Atributos, Relacionamentos e Cardinalidades), para apoiar a definição do modelo de dados a partir dos requisitos e regras de negócio já levantados pelo grupo. |
+| **Motivação** | Nosso grupo já havia levantado os processos de negócio, requisitos funcionais e regras de negócio da Peg Vest Jeans, mas tinha dúvidas sobre quais entidades, atributos e relacionamentos seriam mais adequados para representar esse cenário em um modelo conceitual, e queria um direcionamento inicial sobre cardinalidades e sobre o que deveria ou não entrar no DER. |
+| **Prompt(s) utilizados** | Estamos desenvolvendo um sistema para a empresa Peg Vest Jeans (...) Com base exclusivamente nessas informações, identifique as entidades necessárias para um modelo conceitual de banco de dados, seus principais atributos, os relacionamentos entre elas e as respectivas cardinalidades. Explique também quais entidades devem ser consideradas no DER e quais conceitos devem permanecer apenas como contexto do sistema. |
+| **Resposta recebida** | A IA sugeriu 8 entidades (Funcionário, Cliente, Empresa, Estoque, Pedido, Fornecedor, Pagamento e Produto), com seus respectivos atributos e justificativas de uso, além dos relacionamentos entre elas com cardinalidades (ex: Funcionário–Pedido 1:N, Cliente–Pedido 1:N, Pedido–Pagamento 1:N, Produto–Estoque 1:1, Fornecedor–Produto N:M, Empresa–Pedido 1:N), e recomendou considerar "Empresa" apenas como referência institucional, sem tratá-la como parte operacional do fluxo de vendas. |
+| **Fontes consultadas e verificadas** | A resposta da IA foi confrontada com os processos de negócio, requisitos funcionais e regras de negócio já levantados diretamente com a Peg Vest Jeans pelo grupo, garantindo que as entidades e relacionamentos sugeridos realmente refletissem a rotina da empresa. |
 | **Trechos rejeitados ou corrigidos** | Algumas sugestões apresentadas pela IA não foram utilizadas ou precisaram ser adaptadas, principalmente quando não correspondiam ao que havia sido identificado pelo grupo durante o desenvolvimento do trabalho. |
-| **Justificativa da escolha final** | A IA foi utilizada somente como uma ferramenta de auxílio. O grupo analisou as sugestões recebidas e decidiu quais informações faziam sentido para o projeto, realizando as alterações necessárias antes de incluí-las no trabalho. |
-| **Reflexão crítica** | O uso da IA ajudou o grupo a compreender melhor a atividade, esclarecer dúvidas e encontrar um ponto de partida. Porém, percebemos que suas respostas podem ser genéricas ou não representar exatamente a realidade da organização. Por isso, foi necessário analisar as informações antes de utilizá-las e tomar as decisões finais com base no que foi definido pelo próprio grupo. |
+| **Justificativa da escolha final** | Nós utilizamos a sugestão da IA como ponto de partida, mas validou cada entidade, atributo e relacionamento com base no conhecimento prático sobre a rotina da Peg Vest Jeans, ajustando o que fosse necessário para refletir com mais precisão os processos reais da empresa antes de incluir no modelo final. |
+| **Reflexão crítica** | Utilizamos a IA para nos ajudar a organizar rapidamente um primeiro esboço da modelagem conceitual e a pensar em pontos como escalabilidade e integração futura, mas o grupo percebeu a necessidade de revisar as sugestões à luz da realidade específica da organização, já que a IA não teve acesso direto ao contexto real da loja. |
 
 *Se o grupo não usou nenhuma ferramenta de IA, declare isso explicitamente nesta seção.*
 
