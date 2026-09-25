@@ -9,7 +9,7 @@ Modelagem de um sistema de gestão de informações para uma organização de pe
 
 **Vítor Bezerra Marques RGM: 47538775**
 ****
-## 1. Caracterização da Organização
+# 1. Caracterização da Organização
 
 - **Nome e natureza da organização:** Peg Vest Jeans — empresa especializada na comercialização de jeans feminino no segmento de atacado.
 - **Contexto e porte:** Com fins lucrativos; pequena empresa; 20 pessoas envolvidas, volume de atividades média 
@@ -30,7 +30,7 @@ Modelagem de um sistema de gestão de informações para uma organização de pe
   <img width="382" height="510" alt="image" src="https://github.com/user-attachments/assets/eb38a776-4753-43cc-a795-d5f32b7f5d3a" />
 
   
-## 2. Processos de Negócio
+# 2. Processos de Negócio
 
 - **Principais processos mapeados:** cadastro de clientes, controle de estoque, vendas, emissão de pedidos e solicitações, entregas e transferências
 ---
@@ -61,7 +61,7 @@ Modelagem de um sistema de gestão de informações para uma organização de pe
 - **Confiabilidade → O sistema deve realizar backup automático e local dos dados diariamente.**
 
 ---
-## 4. Regras de Negócio
+# 4. Regras de Negócio
 
 - ## 4.1 Regras operacionais:
 - #### Cadastro 
@@ -76,6 +76,8 @@ Modelagem de um sistema de gestão de informações para uma organização de pe
   O desconto deve ser aplicado somente quando a forma de pagamento selecionada for Pix.
   
   Funcionários não possuem permissão para conceder descontos diferentes dos definidos pela empresa.
+  
+
 - #### Estoque 
   Um produto não pode ser vendido quando não houver quantidade disponível em estoque.
   
@@ -133,6 +135,7 @@ Modelagem de um sistema de gestão de informações para uma organização de pe
   As informações dos clientes devem ser utilizadas somente para as atividades relacionadas ao funcionamento da loja.
 
 ---
+# 5. Dicionário de Dados Conceitual (Preliminar)
 
 ### Cliente
 
@@ -298,9 +301,8 @@ Os exemplos de valores eventualmente utilizados para representar os atributos de
 - As informações dos clientes devem ser utilizadas exclusivamente para atividades relacionadas ao funcionamento da loja, não podendo ser compartilhadas com terceiros ou usadas para finalidades diversas.
 ---
 
-## 7. Diagrama Entidade-Relacionamento (DER)
-<img width="1754" height="763" alt="Conceptual model - BRMW_page-0001 (2)" src="https://github.com/user-attachments/assets/664d9e24-0852-44e2-9e90-ecf1a64ff6d8" />
-
+# 7. Diagrama Entidade-Relacionamento (DER)
+Anexado ao reposiório
 
 ---
 
@@ -318,7 +320,6 @@ No fim, a ideia dessa modelagem foi evitar uma complexidade desnecessária, mant
 
 ## 9. Uso de Inteligência Artificial
 
-Se o grupo usou alguma ferramenta de IA (ChatGPT, Claude, Gemini, Perplexity etc.) em qualquer parte do trabalho, registre **para cada uso relevante**:
 
 | Item | O que registrar |
 |------|------------------|
