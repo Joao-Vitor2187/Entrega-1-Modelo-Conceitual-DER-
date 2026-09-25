@@ -29,6 +29,13 @@ Modelagem de um sistema de gestão de informações para uma organização de pe
 
   <img width="382" height="510" alt="image" src="https://github.com/user-attachments/assets/eb38a776-4753-43cc-a795-d5f32b7f5d3a" />
 
+    Foto Da Entrevista:
+  
+  <img width="382" height="510" alt="image" src="https://github.com/user-attachments/assets/49514ebb-dc71-494b-8eb8-c0ae2eaa4e55" />
+  <img width="382," height="510" alt="image" src="https://github.com/user-attachments/assets/46031314-3464-46a9-a30a-425d2cd8fb3d" />
+
+
+
   
 # 2. Processos de Negócio
 
